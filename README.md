@@ -16,7 +16,8 @@
 ## 快速开始
 
 ```bash
-git clone <this repo> && cd paper-dual-reduce
+git clone https://github.com/mount9527/skill-paper-dual-reducer.git
+cd skill-paper-dual-reducer
 python run.py doctor                                   # 环境自检
 python run.py diagnose --in paper.docx --outdir out     # 只诊断：out/report.md
 ```
