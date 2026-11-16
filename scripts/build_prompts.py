@@ -83,6 +83,10 @@ def build_user(task: dict, text: str, text_style: str = "plain", hints: str = ""
     hint_block = ""
     if hints.strip():
         hint_block = "【额外要求（来自 AIGC 痕迹诊断）】\n%s\n\n" % hints.strip()
+    tgt = c.get("target_sentences")
+    target_line = ""
+    if tgt:
+        target_line = "- 目标句数：%s 句（原文 %d 句，必须变化，且与相邻段不要雷同）\n" % (tgt, c["sentences"])
     return f"""【段落编号】{pid}
 【本轮目标】{op_name}（{task["op"]}）
 【改动幅度】{TIER_SPEC.get(task.get("_tier", "normal"))}
@@ -93,7 +97,7 @@ def build_user(task: dict, text: str, text_style: str = "plain", hints: str = ""
 【约束】
 - 字数：{c["min_chars"]}~{c["max_chars"]} 字（原文 {len(text.strip())} 字）
 - 句数：原文 {c["sentences"]} 句
-- 必须原样保留的片段：{spans}
+{target_line}- 必须原样保留的片段：{spans}
 - 禁止：新增数字/年份/百分比；新增或删除引用；改写书名、术语、英文缩写；改变论断方向
 
 {style_block}{hint_block}【改写要求】

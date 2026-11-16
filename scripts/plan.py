@@ -32,8 +32,10 @@ GUARANTEED_RISK = 0.70  # 达到此分数的段落不受「单段预算上限」
 
 def plan(profile: dict, doc: dict, max_tasks: int = 12,
          budget_share: float = 0.40, min_risk: float = DEFAULT_MIN,
-         style: str = "plain", include: list[str] | None = None) -> dict:
+         style: str = "plain", include: list[str] | None = None,
+         pacing: dict | None = None) -> dict:
     include = [x for x in (include or []) if x]
+    targets = (pacing or {}).get("targets", {})
     rows = {r["pid"]: r for r in doc["paragraphs"]}
     paras = [p for p in profile["paragraphs"] if p["risk"] >= min_risk]
 
@@ -85,6 +87,7 @@ def plan(profile: dict, doc: dict, max_tasks: int = 12,
                 "keep_spans": [s["text"] for s in row["spans"]],
                 "span_kinds": sorted({s["kind"] for s in row["spans"]}),
                 "sentences": len(row["sentences"]),
+                "target_sentences": targets.get(p["pid"], {}).get("to"),
                 "style": row["style"],
                 "forbidden": ["新增数字/年份/百分比", "新增或删除引用标记",
                               "改写书名、术语、英文缩写", "改变论断方向或结论"],
@@ -162,12 +165,15 @@ def main(argv: list[str] | None = None) -> int:
                     help="文风档案：plain=平实五条（默认），academic=只做学术润色")
     ap.add_argument("--include", default="",
                     help="强制纳入的段落 id，逗号分隔（用于 diag 驱动的定向修复）")
+    ap.add_argument("--pacing", help="跨段编排文件（pacing.json），给相邻段分配不同目标句数")
     args = ap.parse_args(argv)
 
     profile = json.loads(Path(args.profile).read_text(encoding="utf-8"))
     doc = json.loads(Path(args.doc).read_text(encoding="utf-8"))
     include = [x.strip() for x in args.include.split(",") if x.strip()]
-    data = plan(profile, doc, args.max_tasks, args.budget_share, args.min_risk, args.style, include)
+    pacing = json.loads(Path(args.pacing).read_text(encoding="utf-8")) if args.pacing else None
+    data = plan(profile, doc, args.max_tasks, args.budget_share, args.min_risk, args.style,
+                include, pacing)
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)

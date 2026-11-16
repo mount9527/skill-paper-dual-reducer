@@ -259,6 +259,38 @@ def main() -> int:
           and tf["counts"].get("forced", 0) >= 1
           and tf["counts"]["tasks"] >= 2)
 
+    # 跨段编排：句数雷同的相邻段落要拿到不同目标句数，并写进提示词
+    syn = rdir / "syn-doc.json"
+    syn.write_text(json.dumps({
+        "schema": "paper-dual-reduce/doc@1",
+        "paragraphs": [
+            {"pid": "s%d" % k, "text": "甲" * 60, "sentences": ["一。", "二。", "三。"],
+             "locked": False, "spans": [], "style": {}}
+            for k in range(1, 5)
+        ],
+    }, ensure_ascii=False), encoding="utf-8")
+    pacing_json = rdir / "pacing.json"
+    run(["scripts/pacing.py", "--doc", str(syn), "--out", str(pacing_json)])
+    pac = json.loads(pacing_json.read_text(encoding="utf-8"))
+    tg = pac["targets"]
+    adjacent_differ = all(tg[p]["to"] != tg[q]["to"] for p, q in
+                          zip(["s1", "s2", "s3"], ["s2", "s3", "s4"])
+                          if p in tg and q in tg)
+    check("跨段编排给相邻段不同目标句数",
+          len(pac["runs"]) >= 1 and len(tg) >= 2 and adjacent_differ
+          and all(v["from"] != v["to"] for v in tg.values()))
+
+    # 目标句数必须出现在提示词的【约束】里
+    demo = json.loads((rdir / "forced" / "tasks.json").read_text(encoding="utf-8"))
+    demo["tasks"][0]["constraints"]["target_sentences"] = 6
+    demo_tasks = rdir / "tasks-paced.json"
+    demo_tasks.write_text(json.dumps(demo, ensure_ascii=False), encoding="utf-8")
+    run(["scripts/build_prompts.py", "--tasks", str(demo_tasks), "--doc", str(doc_json),
+         "--out", str(rdir / "paced-prompts.jsonl")])
+    pp = [json.loads(x) for x in
+          (rdir / "paced-prompts.jsonl").read_text(encoding="utf-8").splitlines() if x.strip()]
+    check("提示词带目标句数", any("目标句数：6 句" in x["user"] for x in pp))
+
     from lib.features import attribute as _attr
     got = _attr({"a1": 0.0, "a2": 0.0, "a3": 0.0, "a4": 0.0, "a5": 0.9, "a6": 0.0}, 0.0)
     check("同义替换算子（O8）已启用", any(c["op"] == "O8" and c["available"] for c in got),
