@@ -1,0 +1,4616 @@
+{
+ "schema": "paper-dual-reduce/profile@1",
+ "source": {
+  "path": "C:\\Users\\14507\\WorkBuddy\\2026-11-16-17-13-59\\output\\20261116-skill-sop\\stage3\\论文双降Skill复现SOP与可行性报告.docx",
+  "file_bytes": 65018,
+  "document_xml_sha256": "551e18613a957ba8d540b255b3507fbc0ed18c380c0304a5fc22147d4aad8773",
+  "generated_at": "2026-11-16T21:25:32"
+ },
+ "thresholds": {
+  "dims": {
+   "cv_full": 0.55,
+   "cv_floor": 0.2,
+   "mid_len": [
+    20,
+    35
+   ],
+   "conn_full": 0.75,
+   "template_full": 1.6,
+   "value_full": 2.2,
+   "bigram_full": 0.35,
+   "filler_full": 0.22,
+   "start_dup_full": 0.5
+  },
+  "weights": {
+   "a1": 0.22,
+   "a2": 0.16,
+   "a3": 0.22,
+   "a4": 0.14,
+   "a5": 0.1,
+   "a6": 0.16
+  },
+  "aigc_threshold": 0.62,
+  "repeat_threshold": 0.35,
+  "fidelity": {
+   "min_overlap": 0.55,
+   "len_ratio": [
+    0.6,
+    1.25
+   ],
+   "max_neg_delta": 0,
+   "max_quant_delta": 1
+  }
+ },
+ "doc": {
+  "paragraphs": 91,
+  "chars": 8032,
+  "risk_mean": 0.1883,
+  "risk_max": 0.3771,
+  "level_share": {
+   "high": 0.0,
+   "mid": 0.0
+  },
+  "dim_means": {
+   "a1": 0.4584,
+   "a2": 0.0371,
+   "a3": 0.011,
+   "a4": 0.5691,
+   "a5": 0.115,
+   "a6": 0.118
+  }
+ },
+ "duplicates": {
+  "stats": {
+   "paragraphs": 91,
+   "grams": 5633,
+   "shared_grams": 26,
+   "repeat_rate": 0.0046
+  },
+  "spans": [
+   {
+    "pid": "p0185",
+    "chars": 20,
+    "sample": "人工原稿模型生成模型生成后人工改人工改写"
+   },
+   {
+    "pid": "p0618",
+    "chars": 20,
+    "sample": "人工原稿模型生成模型生成后人工改人工改写"
+   },
+   {
+    "pid": "p0346",
+    "chars": 17,
+    "sample": "篇真实论文覆盖表格公式脚注多级标题"
+   },
+   {
+    "pid": "p0719",
+    "chars": 17,
+    "sample": "篇真实论文覆盖表格公式脚注多级标题"
+   }
+  ]
+ },
+ "summary": {
+  "high": 0,
+  "mid": 0,
+  "low": 91
+ },
+ "ranking": [
+  "p0350",
+  "p0446",
+  "p0713",
+  "p0648",
+  "p0345",
+  "p0544",
+  "p0252",
+  "p0398",
+  "p0253",
+  "p0348",
+  "p0615",
+  "p0333",
+  "p0062",
+  "p0117",
+  "p0444",
+  "p0338",
+  "p0346",
+  "p0191",
+  "p0140",
+  "p0578",
+  "p0138",
+  "p0397",
+  "p0607",
+  "p0285",
+  "p0287",
+  "p0430",
+  "p0741",
+  "p0141",
+  "p0618",
+  "p0192",
+  "p0614",
+  "p0439",
+  "p0344",
+  "p0330",
+  "p0064",
+  "p0151",
+  "p0477",
+  "p0063",
+  "p0144",
+  "p0248",
+  "p0153",
+  "p0139",
+  "p0145",
+  "p0291",
+  "p0184",
+  "p0066",
+  "p0415",
+  "p0334",
+  "p0478",
+  "p0341",
+  "p0611",
+  "p0743",
+  "p0288",
+  "p0609",
+  "p0122",
+  "p0502",
+  "p0143",
+  "p0693",
+  "p0150",
+  "p0059",
+  "p0647",
+  "p0336",
+  "p0340",
+  "p0610",
+  "p0719",
+  "p0155",
+  "p0158",
+  "p0154",
+  "p0339",
+  "p0146",
+  "p0185",
+  "p0331",
+  "p0118",
+  "p0715",
+  "p0335",
+  "p0187",
+  "p0152",
+  "p0190",
+  "p0119",
+  "p0645",
+  "p0442",
+  "p0349",
+  "p0156",
+  "p0115",
+  "p0181",
+  "p0317",
+  "p0157",
+  "p0824",
+  "p0717",
+  "p0691",
+  "p0186"
+ ],
+ "top": [
+  {
+   "pid": "p0350",
+   "chars": 54,
+   "risk": 0.3771,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.2998,
+    "a6": 0.3355
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 27,
+    "cv": 0.148,
+    "min_len": 23,
+    "max_len": 31,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.094,
+    "filler_ratio": 0.074,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0446",
+   "chars": 60,
+   "risk": 0.3765,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 1.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 1,
+    "avg_len": 60,
+    "cv": 0.0,
+    "min_len": 60,
+    "max_len": 60,
+    "connective_hits": 2,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A2",
+     "name": "连接词过密",
+     "op": "O2",
+     "op_name": "连接词抑制",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O2"
+  },
+  {
+   "pid": "p0713",
+   "chars": 58,
+   "risk": 0.3616,
+   "level": "low",
+   "dims": {
+    "a1": 0.7482,
+    "a2": 0.6667,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1411,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 29,
+    "cv": 0.241,
+    "min_len": 22,
+    "max_len": 36,
+    "connective_hits": 1,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.069,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.748,
+     "available": true
+    },
+    {
+     "code": "A2",
+     "name": "连接词过密",
+     "op": "O2",
+     "op_name": "连接词抑制",
+     "value": 0.667,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0648",
+   "chars": 51,
+   "risk": 0.3526,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0943,
+    "a6": 0.2835
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 25.5,
+    "cv": 0.137,
+    "min_len": 22,
+    "max_len": 29,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.06,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0345",
+   "chars": 54,
+   "risk": 0.3297,
+   "level": "low",
+   "dims": {
+    "a1": 0.9587,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0308,
+    "a6": 0.2118
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 27,
+    "cv": 0.222,
+    "min_len": 21,
+    "max_len": 33,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.02,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.959,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0544",
+   "chars": 57,
+   "risk": 0.3145,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0998,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 28.5,
+    "cv": 0.018,
+    "min_len": 28,
+    "max_len": 29,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.018,
+    "filler_ratio": 0.035,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0252",
+   "chars": 118,
+   "risk": 0.3119,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0689,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 4,
+    "avg_len": 28.75,
+    "cv": 0.096,
+    "min_len": 24,
+    "max_len": 31,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.044,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0398",
+   "chars": 98,
+   "risk": 0.3116,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0662,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 32.67,
+    "cv": 0.058,
+    "min_len": 30,
+    "max_len": 34,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.042,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0253",
+   "chars": 59,
+   "risk": 0.3104,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.0842,
+    "a6": 0.3776
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 29.5,
+    "cv": 0.186,
+    "min_len": 24,
+    "max_len": 35,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.054,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0348",
+   "chars": 55,
+   "risk": 0.3082,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.2199,
+    "a6": 0.36
+   },
+   "raw": {
+    "sentences": 1,
+    "avg_len": 55,
+    "cv": 0.0,
+    "min_len": 55,
+    "max_len": 55,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.093,
+    "filler_ratio": 0.036,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0615",
+   "chars": 48,
+   "risk": 0.3051,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.0852,
+    "a6": 0.3373
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 24,
+    "cv": 0.0,
+    "min_len": 24,
+    "max_len": 24,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.042,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0333",
+   "chars": 85,
+   "risk": 0.3042,
+   "level": "low",
+   "dims": {
+    "a1": 0.4754,
+    "a2": 0.6667,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0668,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 42.5,
+    "cv": 0.388,
+    "min_len": 26,
+    "max_len": 59,
+    "connective_hits": 1,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.012,
+    "filler_ratio": 0.024,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A2",
+     "name": "连接词过密",
+     "op": "O2",
+     "op_name": "连接词抑制",
+     "value": 0.667,
+     "available": true
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.475,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0062",
+   "chars": 150,
+   "risk": 0.3018,
+   "level": "low",
+   "dims": {
+    "a1": 0.2333,
+    "a2": 0.0,
+    "a3": 1.0,
+    "a4": 0.3939,
+    "a5": 0.286,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 50,
+    "cv": 0.656,
+    "min_len": 22,
+    "max_len": 96,
+    "connective_hits": 0,
+    "template_hits": 3,
+    "value_marks": 2,
+    "bigram_repeat": 0.095,
+    "filler_ratio": 0.067,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A3",
+     "name": "句式模板化",
+     "op": "O4",
+     "op_name": "句法重构",
+     "value": 1.0,
+     "available": true
+    }
+   ],
+   "suggest_op": "O4"
+  },
+  {
+   "pid": "p0117",
+   "chars": 49,
+   "risk": 0.3002,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.1003,
+    "a6": 0.2925
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 24.5,
+    "cv": 0.02,
+    "min_len": 24,
+    "max_len": 25,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.064,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0444",
+   "chars": 49,
+   "risk": 0.2784,
+   "level": "low",
+   "dims": {
+    "a1": 0.7795,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0,
+    "a6": 0.1
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 24.5,
+    "cv": 0.224,
+    "min_len": 19,
+    "max_len": 30,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.779,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  }
+ ],
+ "paragraphs": [
+  {
+   "pid": "p0350",
+   "chars": 54,
+   "risk": 0.3771,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.2998,
+    "a6": 0.3355
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 27,
+    "cv": 0.148,
+    "min_len": 23,
+    "max_len": 31,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.094,
+    "filler_ratio": 0.074,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0446",
+   "chars": 60,
+   "risk": 0.3765,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 1.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 1,
+    "avg_len": 60,
+    "cv": 0.0,
+    "min_len": 60,
+    "max_len": 60,
+    "connective_hits": 2,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A2",
+     "name": "连接词过密",
+     "op": "O2",
+     "op_name": "连接词抑制",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O2"
+  },
+  {
+   "pid": "p0713",
+   "chars": 58,
+   "risk": 0.3616,
+   "level": "low",
+   "dims": {
+    "a1": 0.7482,
+    "a2": 0.6667,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1411,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 29,
+    "cv": 0.241,
+    "min_len": 22,
+    "max_len": 36,
+    "connective_hits": 1,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.069,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.748,
+     "available": true
+    },
+    {
+     "code": "A2",
+     "name": "连接词过密",
+     "op": "O2",
+     "op_name": "连接词抑制",
+     "value": 0.667,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0648",
+   "chars": 51,
+   "risk": 0.3526,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0943,
+    "a6": 0.2835
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 25.5,
+    "cv": 0.137,
+    "min_len": 22,
+    "max_len": 29,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.06,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0345",
+   "chars": 54,
+   "risk": 0.3297,
+   "level": "low",
+   "dims": {
+    "a1": 0.9587,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0308,
+    "a6": 0.2118
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 27,
+    "cv": 0.222,
+    "min_len": 21,
+    "max_len": 33,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.02,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.959,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0544",
+   "chars": 57,
+   "risk": 0.3145,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0998,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 28.5,
+    "cv": 0.018,
+    "min_len": 28,
+    "max_len": 29,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.018,
+    "filler_ratio": 0.035,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0252",
+   "chars": 118,
+   "risk": 0.3119,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0689,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 4,
+    "avg_len": 28.75,
+    "cv": 0.096,
+    "min_len": 24,
+    "max_len": 31,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.044,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0398",
+   "chars": 98,
+   "risk": 0.3116,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0662,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 32.67,
+    "cv": 0.058,
+    "min_len": 30,
+    "max_len": 34,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.042,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0253",
+   "chars": 59,
+   "risk": 0.3104,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.0842,
+    "a6": 0.3776
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 29.5,
+    "cv": 0.186,
+    "min_len": 24,
+    "max_len": 35,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.054,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0348",
+   "chars": 55,
+   "risk": 0.3082,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.2199,
+    "a6": 0.36
+   },
+   "raw": {
+    "sentences": 1,
+    "avg_len": 55,
+    "cv": 0.0,
+    "min_len": 55,
+    "max_len": 55,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.093,
+    "filler_ratio": 0.036,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0615",
+   "chars": 48,
+   "risk": 0.3051,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.0852,
+    "a6": 0.3373
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 24,
+    "cv": 0.0,
+    "min_len": 24,
+    "max_len": 24,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.042,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0333",
+   "chars": 85,
+   "risk": 0.3042,
+   "level": "low",
+   "dims": {
+    "a1": 0.4754,
+    "a2": 0.6667,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0668,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 42.5,
+    "cv": 0.388,
+    "min_len": 26,
+    "max_len": 59,
+    "connective_hits": 1,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.012,
+    "filler_ratio": 0.024,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A2",
+     "name": "连接词过密",
+     "op": "O2",
+     "op_name": "连接词抑制",
+     "value": 0.667,
+     "available": true
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.475,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0062",
+   "chars": 150,
+   "risk": 0.3018,
+   "level": "low",
+   "dims": {
+    "a1": 0.2333,
+    "a2": 0.0,
+    "a3": 1.0,
+    "a4": 0.3939,
+    "a5": 0.286,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 50,
+    "cv": 0.656,
+    "min_len": 22,
+    "max_len": 96,
+    "connective_hits": 0,
+    "template_hits": 3,
+    "value_marks": 2,
+    "bigram_repeat": 0.095,
+    "filler_ratio": 0.067,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A3",
+     "name": "句式模板化",
+     "op": "O4",
+     "op_name": "句法重构",
+     "value": 1.0,
+     "available": true
+    }
+   ],
+   "suggest_op": "O4"
+  },
+  {
+   "pid": "p0117",
+   "chars": 49,
+   "risk": 0.3002,
+   "level": "low",
+   "dims": {
+    "a1": 1.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.1003,
+    "a6": 0.2925
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 24.5,
+    "cv": 0.02,
+    "min_len": 24,
+    "max_len": 25,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.064,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 1.0,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0444",
+   "chars": 49,
+   "risk": 0.2784,
+   "level": "low",
+   "dims": {
+    "a1": 0.7795,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0,
+    "a6": 0.1
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 24.5,
+    "cv": 0.224,
+    "min_len": 19,
+    "max_len": 30,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.779,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0338",
+   "chars": 50,
+   "risk": 0.2741,
+   "level": "low",
+   "dims": {
+    "a1": 0.4991,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1397,
+    "a6": 0.367
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 16.67,
+    "cv": 0.344,
+    "min_len": 10,
+    "max_len": 24,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.089,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.499,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0346",
+   "chars": 77,
+   "risk": 0.2675,
+   "level": "low",
+   "dims": {
+    "a1": 0.825,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.0437,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 38.5,
+    "cv": 0.195,
+    "min_len": 31,
+    "max_len": 46,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.028,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.1042,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.825,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0191",
+   "chars": 40,
+   "risk": 0.2672,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0,
+    "a6": 0.1963
+   },
+   "raw": {
+    "sentences": 1,
+    "avg_len": 40,
+    "cv": 0.0,
+    "min_len": 40,
+    "max_len": 40,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0140",
+   "chars": 76,
+   "risk": 0.2647,
+   "level": "low",
+   "dims": {
+    "a1": 0.5122,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0957,
+    "a6": 0.3071
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 38,
+    "cv": 0.368,
+    "min_len": 24,
+    "max_len": 52,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.027,
+    "filler_ratio": 0.026,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.512,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0578",
+   "chars": 131,
+   "risk": 0.2633,
+   "level": "low",
+   "dims": {
+    "a1": 0.6424,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.2847,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 4,
+    "avg_len": 32.75,
+    "cv": 0.251,
+    "min_len": 19,
+    "max_len": 40,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.161,
+    "filler_ratio": 0.015,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.642,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0138",
+   "chars": 47,
+   "risk": 0.2616,
+   "level": "low",
+   "dims": {
+    "a1": 0.5247,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0342,
+    "a6": 0.3057
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 23.5,
+    "cv": 0.362,
+    "min_len": 15,
+    "max_len": 32,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.022,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.525,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0397",
+   "chars": 44,
+   "risk": 0.2616,
+   "level": "low",
+   "dims": {
+    "a1": 0.376,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.3289,
+    "a6": 0.3259
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 14.67,
+    "cv": 0.41,
+    "min_len": 9,
+    "max_len": 23,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.209,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0607",
+   "chars": 51,
+   "risk": 0.2592,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.22,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 1,
+    "avg_len": 51,
+    "cv": 0.0,
+    "min_len": 51,
+    "max_len": 51,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.14,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0285",
+   "chars": 128,
+   "risk": 0.2584,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.2099,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 42.67,
+    "cv": 0.029,
+    "min_len": 41,
+    "max_len": 44,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.073,
+    "filler_ratio": 0.047,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0287",
+   "chars": 76,
+   "risk": 0.2567,
+   "level": "low",
+   "dims": {
+    "a1": 0.5533,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1692,
+    "a6": 0.1462
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 25.33,
+    "cv": 0.378,
+    "min_len": 12,
+    "max_len": 34,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.108,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.553,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0430",
+   "chars": 65,
+   "risk": 0.2528,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1442,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 1,
+    "avg_len": 65,
+    "cv": 0.0,
+    "min_len": 65,
+    "max_len": 65,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.052,
+    "filler_ratio": 0.031,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0741",
+   "chars": 93,
+   "risk": 0.2519,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1343,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 46.5,
+    "cv": 0.075,
+    "min_len": 43,
+    "max_len": 50,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.057,
+    "filler_ratio": 0.022,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0141",
+   "chars": 93,
+   "risk": 0.2507,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1196,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 46.5,
+    "cv": 0.183,
+    "min_len": 38,
+    "max_len": 55,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.076,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0618",
+   "chars": 67,
+   "risk": 0.2455,
+   "level": "low",
+   "dims": {
+    "a1": 0.7252,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0909,
+    "a5": 0.2494,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 33.5,
+    "cv": 0.254,
+    "min_len": 25,
+    "max_len": 42,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.159,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.1818,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.725,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0192",
+   "chars": 85,
+   "risk": 0.2422,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0187,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 42.5,
+    "cv": 0.106,
+    "min_len": 38,
+    "max_len": 47,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.012,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0614",
+   "chars": 48,
+   "risk": 0.2309,
+   "level": "low",
+   "dims": {
+    "a1": 0.5,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0342,
+    "a6": 0.1143
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 24,
+    "cv": 0.375,
+    "min_len": 15,
+    "max_len": 33,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.022,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.5,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0439",
+   "chars": 76,
+   "risk": 0.2292,
+   "level": "low",
+   "dims": {
+    "a1": 0.7566,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.2691,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 38,
+    "cv": 0.237,
+    "min_len": 29,
+    "max_len": 47,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.068,
+    "filler_ratio": 0.079,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.757,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0344",
+   "chars": 127,
+   "risk": 0.2255,
+   "level": "low",
+   "dims": {
+    "a1": 0.7419,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.6421,
+    "a5": 0.1216,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 42.33,
+    "cv": 0.213,
+    "min_len": 32,
+    "max_len": 54,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.057,
+    "filler_ratio": 0.016,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.742,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.642,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0330",
+   "chars": 107,
+   "risk": 0.2227,
+   "level": "low",
+   "dims": {
+    "a1": 0.5195,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.077,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 53.5,
+    "cv": 0.364,
+    "min_len": 34,
+    "max_len": 73,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.049,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.519,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0064",
+   "chars": 158,
+   "risk": 0.2219,
+   "level": "low",
+   "dims": {
+    "a1": 0.825,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.4246,
+    "a5": 0.2017,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 4,
+    "avg_len": 39.5,
+    "cv": 0.198,
+    "min_len": 29,
+    "max_len": 48,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.128,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.825,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0151",
+   "chars": 114,
+   "risk": 0.2204,
+   "level": "low",
+   "dims": {
+    "a1": 0.8382,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.2026,
+    "a5": 0.065,
+    "a6": 0.2499
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 38,
+    "cv": 0.224,
+    "min_len": 31,
+    "max_len": 50,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.019,
+    "filler_ratio": 0.018,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.838,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0477",
+   "chars": 118,
+   "risk": 0.2144,
+   "level": "low",
+   "dims": {
+    "a1": 0.6946,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.6148,
+    "a5": 0.1329,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 39.33,
+    "cv": 0.239,
+    "min_len": 28,
+    "max_len": 51,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.062,
+    "filler_ratio": 0.017,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.695,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.615,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0063",
+   "chars": 136,
+   "risk": 0.2042,
+   "level": "low",
+   "dims": {
+    "a1": 0.3678,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.6658,
+    "a5": 0.0952,
+    "a6": 0.3532
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 45.33,
+    "cv": 0.415,
+    "min_len": 20,
+    "max_len": 65,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.061,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.666,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0144",
+   "chars": 41,
+   "risk": 0.1992,
+   "level": "low",
+   "dims": {
+    "a1": 0.175,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0,
+    "a6": 0.3489
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 20.5,
+    "cv": 0.61,
+    "min_len": 8,
+    "max_len": 33,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0248",
+   "chars": 89,
+   "risk": 0.1989,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.1461,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 44.5,
+    "cv": 0.169,
+    "min_len": 37,
+    "max_len": 52,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.034,
+    "filler_ratio": 0.045,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    },
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0153",
+   "chars": 98,
+   "risk": 0.1819,
+   "level": "low",
+   "dims": {
+    "a1": 0.07,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1072,
+    "a6": 0.2992
+   },
+   "raw": {
+    "sentences": 5,
+    "avg_len": 19.4,
+    "cv": 0.936,
+    "min_len": 5,
+    "max_len": 54,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.042,
+    "filler_ratio": 0.02,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0139",
+   "chars": 105,
+   "risk": 0.1753,
+   "level": "low",
+   "dims": {
+    "a1": 0.1883,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0604,
+    "a6": 0.1171
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 52.5,
+    "cv": 0.543,
+    "min_len": 24,
+    "max_len": 81,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.038,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0145",
+   "chars": 46,
+   "risk": 0.1722,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0,
+    "a6": 0.3915
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 23,
+    "cv": 0.652,
+    "min_len": 8,
+    "max_len": 38,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0291",
+   "chars": 85,
+   "risk": 0.1719,
+   "level": "low",
+   "dims": {
+    "a1": 0.2132,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1533,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 42.5,
+    "cv": 0.529,
+    "min_len": 20,
+    "max_len": 65,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.098,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0184",
+   "chars": 95,
+   "risk": 0.1714,
+   "level": "low",
+   "dims": {
+    "a1": 0.6359,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.0524,
+    "a6": 0.3529
+   },
+   "raw": {
+    "sentences": 4,
+    "avg_len": 23.5,
+    "cv": 0.349,
+    "min_len": 10,
+    "max_len": 31,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 3,
+    "bigram_repeat": 0.033,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.636,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0066",
+   "chars": 64,
+   "risk": 0.1699,
+   "level": "low",
+   "dims": {
+    "a1": 0.5,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.1355,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 32,
+    "cv": 0.375,
+    "min_len": 20,
+    "max_len": 44,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.086,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    },
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.5,
+     "available": true
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0415",
+   "chars": 66,
+   "risk": 0.1697,
+   "level": "low",
+   "dims": {
+    "a1": 0.825,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0909,
+    "a5": 0.0551,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 33,
+    "cv": 0.152,
+    "min_len": 28,
+    "max_len": 38,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.035,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.825,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0334",
+   "chars": 52,
+   "risk": 0.1677,
+   "level": "low",
+   "dims": {
+    "a1": 0.0929,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0308,
+    "a6": 0.2112
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 26,
+    "cv": 0.5,
+    "min_len": 13,
+    "max_len": 39,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.02,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0478",
+   "chars": 87,
+   "risk": 0.1626,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1164,
+    "a6": 0.2476
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 43.5,
+    "cv": 0.609,
+    "min_len": 17,
+    "max_len": 70,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.074,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0341",
+   "chars": 86,
+   "risk": 0.1616,
+   "level": "low",
+   "dims": {
+    "a1": 0.644,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.1612,
+    "a6": 0.2017
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 28.67,
+    "cv": 0.329,
+    "min_len": 22,
+    "max_len": 42,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 3,
+    "bigram_repeat": 0.103,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.644,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0611",
+   "chars": 71,
+   "risk": 0.1563,
+   "level": "low",
+   "dims": {
+    "a1": 0.825,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.0238,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 35.5,
+    "cv": 0.127,
+    "min_len": 31,
+    "max_len": 40,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 4,
+    "bigram_repeat": 0.015,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.825,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0743",
+   "chars": 81,
+   "risk": 0.1557,
+   "level": "low",
+   "dims": {
+    "a1": 0.7608,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.1581,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 40.5,
+    "cv": 0.235,
+    "min_len": 31,
+    "max_len": 50,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 3,
+    "bigram_repeat": 0.068,
+    "filler_ratio": 0.025,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.761,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0288",
+   "chars": 85,
+   "risk": 0.1524,
+   "level": "low",
+   "dims": {
+    "a1": 0.1167,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1209,
+    "a6": 0.0093
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 28.33,
+    "cv": 0.572,
+    "min_len": 11,
+    "max_len": 50,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.077,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0609",
+   "chars": 107,
+   "risk": 0.1524,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.1504,
+    "a5": 0.1526,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 1,
+    "avg_len": 107,
+    "cv": 0.0,
+    "min_len": 107,
+    "max_len": 107,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.097,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0122",
+   "chars": 105,
+   "risk": 0.1509,
+   "level": "low",
+   "dims": {
+    "a1": 0.4005,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5671,
+    "a5": 0.1,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 52.5,
+    "cv": 0.429,
+    "min_len": 30,
+    "max_len": 75,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.039,
+    "filler_ratio": 0.019,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.567,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0502",
+   "chars": 75,
+   "risk": 0.1476,
+   "level": "low",
+   "dims": {
+    "a1": 0.726,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.1387,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 37.5,
+    "cv": 0.253,
+    "min_len": 28,
+    "max_len": 47,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 3,
+    "bigram_repeat": 0.088,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.726,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0143",
+   "chars": 48,
+   "risk": 0.145,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.1855,
+    "a6": 0.0755
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 24,
+    "cv": 0.625,
+    "min_len": 9,
+    "max_len": 39,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.064,
+    "filler_ratio": 0.042,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0693",
+   "chars": 100,
+   "risk": 0.1446,
+   "level": "low",
+   "dims": {
+    "a1": 0.7159,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.1264,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 33.33,
+    "cv": 0.29,
+    "min_len": 26,
+    "max_len": 47,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 6,
+    "bigram_repeat": 0.08,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.716,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0150",
+   "chars": 220,
+   "risk": 0.1427,
+   "level": "low",
+   "dims": {
+    "a1": 0.14,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.7934,
+    "a5": 0.2606,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 5,
+    "avg_len": 43.8,
+    "cv": 0.641,
+    "min_len": 11,
+    "max_len": 82,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.166,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.793,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0059",
+   "chars": 48,
+   "risk": 0.1426,
+   "level": "low",
+   "dims": {
+    "a1": 0.65,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0909,
+    "a5": 0.1209,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 1,
+    "avg_len": 48,
+    "cv": 0.0,
+    "min_len": 48,
+    "max_len": 48,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.023,
+    "filler_ratio": 0.042,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.65,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0647",
+   "chars": 71,
+   "risk": 0.137,
+   "level": "low",
+   "dims": {
+    "a1": 0.6994,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.0737,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 35.5,
+    "cv": 0.268,
+    "min_len": 26,
+    "max_len": 45,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 4,
+    "bigram_repeat": 0.047,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.699,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0336",
+   "chars": 71,
+   "risk": 0.1359,
+   "level": "low",
+   "dims": {
+    "a1": 0.4015,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0909,
+    "a5": 0.0235,
+    "a6": 0.3528
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 23.67,
+    "cv": 0.459,
+    "min_len": 9,
+    "max_len": 35,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.015,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0340",
+   "chars": 100,
+   "risk": 0.1336,
+   "level": "low",
+   "dims": {
+    "a1": 0.3421,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0909,
+    "a5": 0.1236,
+    "a6": 0.3556
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 50,
+    "cv": 0.46,
+    "min_len": 27,
+    "max_len": 73,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.053,
+    "filler_ratio": 0.02,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0610",
+   "chars": 60,
+   "risk": 0.1333,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.3729,
+    "a6": 0.2697
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 30,
+    "cv": 0.567,
+    "min_len": 13,
+    "max_len": 47,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.107,
+    "filler_ratio": 0.1,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0719",
+   "chars": 154,
+   "risk": 0.1319,
+   "level": "low",
+   "dims": {
+    "a1": 0.4686,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.1145,
+    "a5": 0.1226,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 6,
+    "avg_len": 25,
+    "cv": 0.423,
+    "min_len": 8,
+    "max_len": 44,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 3,
+    "bigram_repeat": 0.078,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0472,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.469,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0155",
+   "chars": 66,
+   "risk": 0.1302,
+   "level": "low",
+   "dims": {
+    "a1": 0.1745,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.0249,
+    "a6": 0.2247
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 22,
+    "cv": 0.456,
+    "min_len": 13,
+    "max_len": 36,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.016,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0158",
+   "chars": 133,
+   "risk": 0.1289,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.3333,
+    "a3": 0.0,
+    "a4": 0.6582,
+    "a5": 0.0615,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 4,
+    "avg_len": 33,
+    "cv": 0.672,
+    "min_len": 6,
+    "max_len": 60,
+    "connective_hits": 1,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.03,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.658,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0154",
+   "chars": 117,
+   "risk": 0.1273,
+   "level": "low",
+   "dims": {
+    "a1": 0.0875,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.6115,
+    "a5": 0.0827,
+    "a6": 0.2293
+   },
+   "raw": {
+    "sentences": 4,
+    "avg_len": 29,
+    "cv": 0.907,
+    "min_len": 5,
+    "max_len": 70,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.053,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.612,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0339",
+   "chars": 94,
+   "risk": 0.1202,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.1724,
+    "a6": 0.2987
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 31.33,
+    "cv": 0.858,
+    "min_len": 8,
+    "max_len": 69,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.054,
+    "filler_ratio": 0.043,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0146",
+   "chars": 53,
+   "risk": 0.119,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 1.0,
+    "a5": 0.0,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 26.5,
+    "cv": 0.66,
+    "min_len": 9,
+    "max_len": 44,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 0,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 1.0,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0185",
+   "chars": 149,
+   "risk": 0.1184,
+   "level": "low",
+   "dims": {
+    "a1": 0.14,
+    "a2": 0.2667,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.1946,
+    "a6": 0.0687
+   },
+   "raw": {
+    "sentences": 5,
+    "avg_len": 29.6,
+    "cv": 0.626,
+    "min_len": 9,
+    "max_len": 63,
+    "connective_hits": 1,
+    "template_hits": 0,
+    "value_marks": 4,
+    "bigram_repeat": 0.106,
+    "filler_ratio": 0.013,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0702,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0331",
+   "chars": 50,
+   "risk": 0.1179,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.0982,
+    "a6": 0.3279
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 25,
+    "cv": 0.8,
+    "min_len": 5,
+    "max_len": 45,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.062,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0118",
+   "chars": 121,
+   "risk": 0.1136,
+   "level": "low",
+   "dims": {
+    "a1": 0.4535,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.0721,
+    "a6": 0.1673
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 60.5,
+    "cv": 0.306,
+    "min_len": 42,
+    "max_len": 79,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 9,
+    "bigram_repeat": 0.046,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A1",
+     "name": "句长均齐",
+     "op": "O1",
+     "op_name": "句长重分布",
+     "value": 0.454,
+     "available": true
+    }
+   ],
+   "suggest_op": "O1"
+  },
+  {
+   "pid": "p0715",
+   "chars": 163,
+   "risk": 0.098,
+   "level": "low",
+   "dims": {
+    "a1": 0.4438,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.1768,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 6,
+    "avg_len": 26.5,
+    "cv": 0.437,
+    "min_len": 8,
+    "max_len": 46,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 6,
+    "bigram_repeat": 0.097,
+    "filler_ratio": 0.012,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0335",
+   "chars": 112,
+   "risk": 0.0939,
+   "level": "low",
+   "dims": {
+    "a1": 0.0229,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5942,
+    "a5": 0.108,
+    "a6": 0.0715
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 37.33,
+    "cv": 0.538,
+    "min_len": 9,
+    "max_len": 53,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.045,
+    "filler_ratio": 0.018,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.594,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0187",
+   "chars": 115,
+   "risk": 0.0932,
+   "level": "low",
+   "dims": {
+    "a1": 0.0875,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.6047,
+    "a5": 0.0571,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 4,
+    "avg_len": 28.5,
+    "cv": 0.597,
+    "min_len": 5,
+    "max_len": 51,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.036,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.605,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0152",
+   "chars": 145,
+   "risk": 0.0926,
+   "level": "low",
+   "dims": {
+    "a1": 0.2797,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.0688,
+    "a6": 0.2528
+   },
+   "raw": {
+    "sentences": 5,
+    "avg_len": 28.8,
+    "cv": 0.475,
+    "min_len": 5,
+    "max_len": 44,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 4,
+    "bigram_repeat": 0.044,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0190",
+   "chars": 78,
+   "risk": 0.0885,
+   "level": "low",
+   "dims": {
+    "a1": 0.069,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.1257,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 39,
+    "cv": 0.513,
+    "min_len": 19,
+    "max_len": 59,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.08,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0119",
+   "chars": 104,
+   "risk": 0.0862,
+   "level": "low",
+   "dims": {
+    "a1": 0.2679,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.1259,
+    "a5": 0.0,
+    "a6": 0.155
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 52,
+    "cv": 0.5,
+    "min_len": 26,
+    "max_len": 78,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0645",
+   "chars": 81,
+   "risk": 0.086,
+   "level": "low",
+   "dims": {
+    "a1": 0.3481,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0909,
+    "a5": 0.1193,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 40.5,
+    "cv": 0.457,
+    "min_len": 22,
+    "max_len": 59,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.076,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0442",
+   "chars": 73,
+   "risk": 0.0857,
+   "level": "low",
+   "dims": {
+    "a1": 0.0801,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.0683,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 36.5,
+    "cv": 0.507,
+    "min_len": 18,
+    "max_len": 55,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.043,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0349",
+   "chars": 83,
+   "risk": 0.0848,
+   "level": "low",
+   "dims": {
+    "a1": 0.1978,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0909,
+    "a5": 0.1299,
+    "a6": 0.1908
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 27.67,
+    "cv": 0.506,
+    "min_len": 12,
+    "max_len": 46,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.051,
+    "filler_ratio": 0.024,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0156",
+   "chars": 118,
+   "risk": 0.0793,
+   "level": "low",
+   "dims": {
+    "a1": 0.1906,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.0635,
+    "a6": 0.2813
+   },
+   "raw": {
+    "sentences": 4,
+    "avg_len": 29.25,
+    "cv": 0.494,
+    "min_len": 5,
+    "max_len": 43,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 3,
+    "bigram_repeat": 0.018,
+    "filler_ratio": 0.017,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0115",
+   "chars": 168,
+   "risk": 0.0792,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.4444,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.2211,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 3,
+    "avg_len": 56,
+    "cv": 0.612,
+    "min_len": 14,
+    "max_len": 98,
+    "connective_hits": 1,
+    "template_hits": 0,
+    "value_marks": 5,
+    "bigram_repeat": 0.11,
+    "filler_ratio": 0.024,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0181",
+   "chars": 123,
+   "risk": 0.0746,
+   "level": "low",
+   "dims": {
+    "a1": 0.175,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.2609,
+    "a5": 0.1273,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 4,
+    "avg_len": 30.75,
+    "cv": 0.556,
+    "min_len": 13,
+    "max_len": 59,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.06,
+    "filler_ratio": 0.016,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0317",
+   "chars": 55,
+   "risk": 0.0739,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.5455,
+    "a5": 0.1052,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 27.5,
+    "cv": 0.636,
+    "min_len": 10,
+    "max_len": 45,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 1,
+    "bigram_repeat": 0.02,
+    "filler_ratio": 0.036,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [
+    {
+     "code": "A4",
+     "name": "信息空泛",
+     "op": "O5",
+     "op_name": "具体化改写",
+     "value": 0.545,
+     "available": false
+    }
+   ],
+   "suggest_op": "O5"
+  },
+  {
+   "pid": "p0157",
+   "chars": 116,
+   "risk": 0.0734,
+   "level": "low",
+   "dims": {
+    "a1": 0.07,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.1175,
+    "a6": 0.3697
+   },
+   "raw": {
+    "sentences": 5,
+    "avg_len": 23,
+    "cv": 0.877,
+    "min_len": 5,
+    "max_len": 62,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 3,
+    "bigram_repeat": 0.075,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0824",
+   "chars": 52,
+   "risk": 0.0616,
+   "level": "low",
+   "dims": {
+    "a1": 0.2357,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0909,
+    "a5": 0.0787,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 26,
+    "cv": 0.423,
+    "min_len": 15,
+    "max_len": 37,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 2,
+    "bigram_repeat": 0.0,
+    "filler_ratio": 0.038,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0717",
+   "chars": 174,
+   "risk": 0.0586,
+   "level": "low",
+   "dims": {
+    "a1": 0.2595,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.1184,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 5,
+    "avg_len": 34,
+    "cv": 0.448,
+    "min_len": 8,
+    "max_len": 55,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 10,
+    "bigram_repeat": 0.06,
+    "filler_ratio": 0.011,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0691",
+   "chars": 59,
+   "risk": 0.0581,
+   "level": "low",
+   "dims": {
+    "a1": 0.2975,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.0296,
+    "a6": 0.0
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 29.5,
+    "cv": 0.39,
+    "min_len": 18,
+    "max_len": 41,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 5,
+    "bigram_repeat": 0.019,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  },
+  {
+   "pid": "p0186",
+   "chars": 68,
+   "risk": 0.0354,
+   "level": "low",
+   "dims": {
+    "a1": 0.0,
+    "a2": 0.0,
+    "a3": 0.0,
+    "a4": 0.0,
+    "a5": 0.0873,
+    "a6": 0.2061
+   },
+   "raw": {
+    "sentences": 2,
+    "avg_len": 34,
+    "cv": 0.676,
+    "min_len": 11,
+    "max_len": 57,
+    "connective_hits": 0,
+    "template_hits": 0,
+    "value_marks": 6,
+    "bigram_repeat": 0.056,
+    "filler_ratio": 0.0,
+    "start_dup": 0.0
+   },
+   "dup_ratio": 0.0,
+   "causes": [],
+   "suggest_op": null
+  }
+ ]
+}
