@@ -249,6 +249,17 @@ def main() -> int:
     check("提示词可注入额外要求（--hints）",
           "拆解冒号并列与嵌套编号" in p_hint[0]["user"] and "【额外要求" in p_hint[0]["user"])
 
+    # 平实文风五条：用户口径必须原样落到提示词里
+    plain_prompts = rdir / "prompts.jsonl"
+    if not plain_prompts.exists():
+        plain_prompts = rdir / "run" / "prompts.jsonl"
+    p_plain = [json.loads(x) for x in
+               plain_prompts.read_text(encoding="utf-8").splitlines() if x.strip()]
+    body = p_plain[0]["user"]
+    check("文风五条含吃力普通笔调", "略感吃力" in body and "普通文笔" in body)
+    check("文风五条含助词与通俗化", "的、了、到、过、会、有、能、把" in body and "通俗说法" in body)
+    check("文风五条含字数约束", "±20%" in body)
+
     # diag 驱动选段：把低风险但带痕迹的段落强制纳入（--include）
     low = min(prof["paragraphs"], key=lambda p: p["risk"])
     run(["run.py", "rewrite", "--in", str(FIX / "sample.docx"), "--outdir", str(rdir / "forced"),
