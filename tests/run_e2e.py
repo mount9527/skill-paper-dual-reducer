@@ -270,7 +270,22 @@ def main() -> int:
           and tf["counts"].get("forced", 0) >= 1
           and tf["counts"]["tasks"] >= 2)
 
-    # 跨段编排：句数雷同的相邻段落要拿到不同目标句数，并写进提示词
+    # 强制纳入不受 profile 口径限制（pacing 的候选比 profile 宽）
+    doc2p, prof2p, out2p = rdir / "d2.json", rdir / "p2.json", rdir / "t2.json"
+    doc2p.write_text(json.dumps({"schema": "paper-dual-reduce/doc@1", "paragraphs": [
+        {"pid": "a1", "text": "甲" * 60, "sentences": ["一。", "二。", "三。"],
+         "locked": False, "spans": [], "style": {}},
+        {"pid": "a2", "text": "乙" * 60, "sentences": ["一。", "二。"],
+         "locked": False, "spans": [], "style": {}},
+    ]}, ensure_ascii=False), encoding="utf-8")
+    prof2p.write_text(json.dumps({"schema": "paper-dual-reduce/profile@1", "paragraphs": [
+        {"pid": "a1", "risk": 0.5, "chars": 60, "causes": [], "dims": {}, "dup_ratio": 0.0},
+    ]}, ensure_ascii=False), encoding="utf-8")
+    run(["scripts/plan.py", "--profile", str(prof2p), "--doc", str(doc2p),
+         "--out", str(out2p), "--max-tasks", "1", "--include", "a2"])
+    t2 = json.loads(out2p.read_text(encoding="utf-8"))
+    check("强制纳入不受 profile 口径限制",
+          any(t["pid"] == "a2" for t in t2["tasks"]) and t2["counts"]["forced"] >= 1)
     syn = rdir / "syn-doc.json"
     syn.write_text(json.dumps({
         "schema": "paper-dual-reduce/doc@1",

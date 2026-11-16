@@ -120,9 +120,22 @@ def plan(profile: dict, doc: dict, max_tasks: int = 12,
         if pid in seen:
             continue
         row = rows.get(pid)
-        p = by_pid.get(pid)
-        if not row or p is None or row.get("locked"):
+        if not row or row.get("locked"):
             continue
+        p = by_pid.get(pid)
+        if p is None:
+            # pacing/segdiag 的候选口径比 profile 宽（profile 只收够长、可改写的段），
+            # 差集里的段也必须能强制纳入，否则跨段目标永远落不到任务上。
+            p = {
+                "pid": pid,
+                "risk": 0.0,
+                "gain": 0.0,
+                "rho": 0.0,
+                "chars": len((row.get("text") or "").strip()),
+                "causes": [],
+                "dims": {},
+                "dup_ratio": 0.0,
+            }
         tasks.append(make_task(p, len(tasks) + 1))
         seen.add(pid)
         forced.append(pid)
