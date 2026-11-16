@@ -239,6 +239,16 @@ def main() -> int:
     p_acad = [json.loads(x) for x in (rdir / "acad" / "prompts.jsonl").read_text(encoding="utf-8").splitlines() if x.strip()]
     check("academic 档不带文风块", "【文风要求" not in p_acad[0]["user"])
 
+    # 额外要求注入（降 AIGC 的把手：把 9 维痕迹诊断结论塞进每条提示词）
+    hints_file = rdir / "hints.md"
+    hints_file.write_text("· 拆解冒号并列与嵌套编号\n· 减少破折号", encoding="utf-8")
+    run(["run.py", "rewrite", "--in", str(FIX / "sample.docx"), "--outdir", str(rdir / "hinted"),
+         "--max-tasks", "2", "--hints", str(hints_file)])
+    p_hint = [json.loads(x) for x in
+              (rdir / "hinted" / "prompts.jsonl").read_text(encoding="utf-8").splitlines() if x.strip()]
+    check("提示词可注入额外要求（--hints）",
+          "拆解冒号并列与嵌套编号" in p_hint[0]["user"] and "【额外要求" in p_hint[0]["user"])
+
     from lib.features import attribute as _attr
     got = _attr({"a1": 0.0, "a2": 0.0, "a3": 0.0, "a4": 0.0, "a5": 0.9, "a6": 0.0}, 0.0)
     check("同义替换算子（O8）已启用", any(c["op"] == "O8" and c["available"] for c in got),

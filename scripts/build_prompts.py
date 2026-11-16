@@ -74,12 +74,15 @@ SYSTEM = """你是中文学术论文的润色编辑，只做表达层的改写�
 5. text 必须是一整段可直接替换原文的文字，不含换行符。"""
 
 
-def build_user(task: dict, text: str, text_style: str = "plain") -> str:
+def build_user(task: dict, text: str, text_style: str = "plain", hints: str = "") -> str:
     op_name, op_rule = OP_SPEC.get(task["op"], OP_SPEC["O4"])
     c = task["constraints"]
     pid = task["pid"]
     spans = "、".join(c["keep_spans"]) if c["keep_spans"] else "（本段无保护区）"
     style_block = (STYLE_PLAIN + "\n\n") if text_style == "plain" else ""
+    hint_block = ""
+    if hints.strip():
+        hint_block = "【额外要求（来自 AIGC 痕迹诊断）】\n%s\n\n" % hints.strip()
     return f"""【段落编号】{pid}
 【本轮目标】{op_name}（{task["op"]}）
 【改动幅度】{TIER_SPEC.get(task.get("_tier", "normal"))}
@@ -93,7 +96,7 @@ def build_user(task: dict, text: str, text_style: str = "plain") -> str:
 - 必须原样保留的片段：{spans}
 - 禁止：新增数字/年份/百分比；新增或删除引用；改写书名、术语、英文缩写；改变论断方向
 
-{style_block}【改写要求】
+{style_block}{hint_block}【改写要求】
 {op_rule}
 
 【输出】仅一行 JSON：{{"pid": "{pid}", "text": "..."}}"""
@@ -106,12 +109,20 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--out", required=True)
     ap.add_argument("--limit", type=int, default=0, help="只渲染前 N 个任务（0=全部）")
     ap.add_argument("--k", type=int, default=4, help="每个任务的候选数（默认 4）")
+    ap.add_argument("--hints", help="额外要求文本文件（UTF-8，每行一条）；会追加到每条提示词")
     args = ap.parse_args(argv)
 
     tasks = json.loads(Path(args.tasks).read_text(encoding="utf-8"))
     doc = json.loads(Path(args.doc).read_text(encoding="utf-8"))
     rows = {r["pid"]: r for r in doc["paragraphs"]}
     text_style = tasks.get("text_style", "plain")
+    hints = ""
+    if args.hints:
+        hp = Path(args.hints)
+        if not hp.exists():
+            print("[prompts] 找不到额外要求文件：%s" % hp, file=sys.stderr)
+            return 2
+        hints = hp.read_text(encoding="utf-8")
 
     selected = tasks["tasks"][: args.limit] if args.limit else tasks["tasks"]
     n = 0
@@ -132,7 +143,7 @@ def main(argv: list[str] | None = None) -> int:
                     "op": task["op"],
                     "tier": tier,
                     "system": SYSTEM,
-                    "user": build_user(t, row["text"], text_style),
+                    "user": build_user(t, row["text"], text_style, hints),
                     "expect": {"schema": {"pid": "str", "text": "str"},
                                "max_chars": task["constraints"]["max_chars"]},
                 }
