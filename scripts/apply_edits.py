@@ -115,6 +115,15 @@ def apply(doc_json_path: str, before: str, edits_path: str, out_path: str,
             reject("subjective_added", before=sub_before, after=sub_after)
             continue
 
+        # 闸 1.6：门禁对冲——旧段本来没踩线，改写后不能踩线。
+        # 实测教训：把逗号写成「——」，整篇语体门禁会从「通过」翻成「未通过」，
+        # 而这种回归在回填后的复检才暴露，太晚。
+        dash_before = old_text.count("——")
+        dash_after = new_text.count("——")
+        if dash_after > dash_before and dash_after > 1:
+            reject("gate_regression:dash", before=dash_before, after=dash_after)
+            continue
+
         # 闸 2：长度
         ratio = len(new_text) / max(1, len(old_text.strip()))
         if not (LEN_RATIO[0] <= ratio <= LEN_RATIO[1]):
