@@ -1,0 +1,13 @@
+# 统一换行：跨平台协作时不要因 CRLF/LF 产生噪音 diff
+* text=auto eol=lf
+
+# Windows 脚本保留 CRLF（PowerShell 5.1 对 LF-only 的兼容性不稳）
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 二进制产物
+*.docx binary
+*.png binary
+*.jpg binary
+*.pdf binary
