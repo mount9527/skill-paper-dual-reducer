@@ -208,6 +208,13 @@ def main() -> int:
     lint_stub = rdir / "lint.json"
     check("diagnose 模式不产 lint", not lint_stub.exists())
 
+    run(["run.py", "spotcheck", "--in", str(FIX / "sample.docx"), "--outdir", str(rdir)])
+    sp = (rdir / "spotcheck.md").read_text(encoding="utf-8")
+    check("抽查表生成（含表头与计分说明）", "一致?" in sp and "系统归因" in sp and "≥ 0.80" in sp)
+    sp_rows = [l for l in sp.splitlines()
+               if l.startswith("| ") and not l.startswith("| #") and not l.startswith("|---")]
+    check("抽查表覆盖全部可改写段", len(sp_rows) == 8, str(len(sp_rows)))
+
     print("[10/11] lint 预检 + 三栏对照")
     run(["run.py", "rewrite", "--in", str(FIX / "sample.docx"), "--outdir", str(rdir),
          "--max-tasks", "6"])

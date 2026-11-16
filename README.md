@@ -55,6 +55,7 @@ python run.py finish --in paper.docx --outdir out --edits out/edits.jsonl
 | 门禁 | 判据 | 失败后果 |
 |---|---|---|
 | 实体门禁 | 数字/年份/引用/书名/缩写集合必须完全一致 | 该段拒绝 |
+| 主观表述 | 「我觉得／我认为」计数不得增加 | 该段拒绝 |
 | 长度闸 | 改写后字数 ∈ 原文 × [0.55, 1.40] | 该段拒绝 |
 | 格式签名 | 段落属性 + 字符属性集合必须不变 | 该段回滚 |
 | 篇级复检 | 全部段落签名字节比对 | 整篇回退为原件 |
@@ -65,8 +66,8 @@ python run.py finish --in paper.docx --outdir out --edits out/edits.jsonl
 
 ## 实测证据
 
-- `python tests/run_e2e.py` → **48/48** 断言通过（含两个篡改反例：格式被偷偷加粗、引用被删；
-  以及文风块注入、`--style` 切换、O8 启用）。
+- `python tests/run_e2e.py` → **50/50** 断言通过（含两个篡改反例：格式被偷偷加粗、引用被删；
+  文风块注入、`--style` 切换、O8 启用、主观表述门禁、抽查表生成）。
 - 真实文档（862 段 / 17 表 / 2 节 / 53 标题 / 含目录域）：
   **12 段真改写**，`format_diff`、`entity_diff`、`locked_diff`、结构 diff **全空**；
   Word 打开前后均 **28 页 / 843 段**。

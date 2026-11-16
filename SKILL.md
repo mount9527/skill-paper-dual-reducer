@@ -3,7 +3,7 @@ name: paper-dual-reduce
 description: Diagnose and rewrite Chinese academic papers in .docx to reduce AI-style statistical fingerprints and in-document repetition, keeping Word formatting byte-identical. Use when a user asks to lower AIGC detection risk, reduce repetition, or polish thesis writing while keeping tables, formulas and citations intact.
 description_zh: 诊断并改写中文论文 .docx，降低 AI 写作的统计特征与篇内重复，同时保证 Word 格式零漂移。适用于降 AIGC 味、降重、润色论文表达并保留原格式/表格/公式/引用。
 description_en: Diagnose and rewrite Chinese academic .docx files to reduce AI-style fingerprints and in-document repetition, with byte-level formatting fidelity.
-version: "0.3.0"
+version: "0.3.1"
 ---
 
 # 论文双降（降 AIGC 味 / 降篇内重复）
@@ -35,6 +35,7 @@ version: "0.3.0"
 ```bash
 python run.py doctor                                  # 环境自检，先跑这条
 python run.py diagnose --in paper.docx --outdir out    # 只诊断 → out/report.md
+python run.py spotcheck --in paper.docx --outdir out   # P1 门禁：20 段归因人工抽查表
 python run.py rewrite  --in paper.docx --outdir out    # 出 out/prompts.jsonl，等模型改写
 #   ← 模型读 prompts.jsonl，写 out/edits.jsonl（见下节契约）
 python run.py lint     --in paper.docx --outdir out --edits out/edits.jsonl
@@ -77,6 +78,7 @@ python scripts/render_report.py --doc out/doc.json --profile out/profile.json \
 | 规则 | 判据 | 拒绝原因 |
 |---|---|---|
 | 不改事实 | 数字/年份/百分比/引用/书名/缩写集合必须完全一致 | `entity_added` / `entity_lost` |
+| 不新增主观表述 | 「我觉得／我认为／笔者认为」计数不得增加 | `subjective_added` |
 | 不改长度量级 | 改写后字数 ∈ 原文 × [0.55, 1.40] | `length_out_of_range` |
 | 不改格式 | 段落/字符属性签名必须不变 | `format_drift` |
 | 不动锁定区 | 标题、表格、代码块、公式、脚注、参考文献、<40 字段 | `locked:<原因>` |
@@ -162,6 +164,7 @@ python -c "import json;v=json.load(open('out/real/rewritten.verdict.json',encodi
 | `run.py` | 单入口 CLI（doctor / diagnose / rewrite / lint / finish / all） |
 | `scripts/*.py` | 七步流水线各一脚本，JSON 进 JSON 出 |
 | `scripts/lint_edits.py` | 回填前的门禁预判（复用 apply_edits 的同一套闸门） |
+| `scripts/spotcheck.py` | P1 门禁的人工抽查表（归因核对 + 计分口径） |
 | `lib/ooxml.py` | OOXML 读写（标准库 zipfile + ElementTree），run/段落格式签名 |
 | `lib/anchor.py` | 保护区、锚点、run 重建与回滚 |
 | `lib/features.py` | 六维特征、归因、保真信号 |

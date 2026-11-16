@@ -9,6 +9,7 @@ edits.jsonl 每行一个编辑：
 
 三道闸，逐段执行，任何一道不过只废掉这一段：
 1. 实体门禁    新增或缺失数字/年份/引用 → entity_added / entity_lost
+1.5 主观表述  新增「我认为」这类主观表述 → subjective_added（平实档只许减不许多）
 2. 长度闸      改写前后字数比超出 [0.55, 1.40] → length_out_of_range
 3. 格式闸      段落格式或字符格式签名变化 → format_drift（并回滚该段）
 
@@ -34,6 +35,7 @@ if str(ROOT) not in sys.path:
 
 from lib.anchor import entity_gate, rewrite_paragraph
 from lib.diff import compare, paragraph_signatures
+from lib.features import subjective_count
 from lib.ooxml import Docx, DocxError
 
 LEN_RATIO = (0.55, 1.40)
@@ -103,6 +105,14 @@ def apply(doc_json_path: str, before: str, edits_path: str, out_path: str,
             continue
         if gate["removed"]:
             reject("entity_lost", removed=gate["removed"][:6])
+            continue
+
+        # 闸 1.5：主观表述不得增加。平实文风档要求把它们删掉，
+        # 底线是「不能越改越多」——这条只能靠计数，不能靠提示词自觉。
+        sub_before = subjective_count(old_text)
+        sub_after = subjective_count(new_text)
+        if sub_after > sub_before:
+            reject("subjective_added", before=sub_before, after=sub_after)
             continue
 
         # 闸 2：长度

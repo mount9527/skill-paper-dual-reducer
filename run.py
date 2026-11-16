@@ -38,7 +38,8 @@ from lib.cli import safe_io  # noqa: E402
 CHILD_ENV = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"}
 
 SCRIPTS = ("inspect_docx.py", "diagnose.py", "plan.py", "build_prompts.py",
-           "lint_edits.py", "apply_edits.py", "verify.py", "render_report.py")
+           "lint_edits.py", "apply_edits.py", "verify.py", "render_report.py",
+           "spotcheck.py")
 
 MODES = ("diagnose", "rewrite", "both")
 
@@ -72,6 +73,7 @@ def paths(outdir: Path) -> dict[str, Path]:
         "result": outdir / "rewritten.result.json",
         "verdict": outdir / "rewritten.verdict.json",
         "report": outdir / "report.md",
+        "spotcheck": outdir / "spotcheck.md",
     }
 
 
@@ -105,6 +107,11 @@ def do_report(p: dict, mode: str, style: str) -> None:
     _run("报告", argv)
 
 
+def do_spotcheck(p: dict, n: int) -> None:
+    _run("抽查表", ["scripts/spotcheck.py", "--profile", str(p["profile"]), "--doc", str(p["doc"]),
+                    "--out", str(p["spotcheck"]), "--n", str(n)])
+
+
 def do_lint(before: str, edits: str, p: dict, strict: bool) -> int:
     rc = _run("预检", ["scripts/lint_edits.py", "--doc", str(p["doc"]), "--before", before,
                        "--edits", edits, "--out", str(p["lint"])], allow=(0, 1))
@@ -125,7 +132,8 @@ def do_doctor() -> int:
     checks.append(("python >= 3.10", py >= (3, 10), "%d.%d.%d" % (py[0], py[1], py[2])))
 
     missing = [s for s in SCRIPTS if not (ROOT / "scripts" / s).exists()]
-    checks.append(("脚本齐全", not missing, "缺失 %s" % missing if missing else "8/8"))
+    checks.append(("脚本齐全", not missing,
+                   "缺失 %s" % missing if missing else "%d/%d" % (len(SCRIPTS), len(SCRIPTS))))
 
     outdir = ROOT / "out"
     try:
@@ -167,6 +175,7 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("doctor", help="环境自检")
 
     for name, help_text in (("diagnose", "只诊断：出 doc.json / profile.json / report.md"),
+                            ("spotcheck", "生成 P1 门禁的归因人工抽查表"),
                             ("rewrite", "出提示词（模型改写前的一步）"),
                             ("lint", "dry-run 预检 edits.jsonl"),
                             ("finish", "预检 → 回填 → 复检 → 报告"),
@@ -178,6 +187,7 @@ def main(argv: list[str] | None = None) -> int:
         sp.add_argument("--mode", choices=MODES, default="both", help="模式切换（默认 both）")
         sp.add_argument("--style", choices=("plain", "academic"), default="plain",
                         help="文风档案：plain=平实五条（默认），academic=只做学术润色")
+        sp.add_argument("--n", type=int, default=20, help="抽查表段数（默认 20）")
         sp.add_argument("--max-tasks", type=int, default=12, help="改写任务上限（默认 12）")
         sp.add_argument("--top", type=int, default=15, help="报告保留的高风险段数（默认 15）")
         sp.add_argument("--min-chars", type=int, default=40, help="低于此字数不改写（默认 40）")
@@ -202,6 +212,13 @@ def main(argv: list[str] | None = None) -> int:
             do_diagnose(p, args.top)
             do_report(p, "diagnose", args.style)
             print("\n只诊断模式：报告 → %s" % p["report"])
+            return 0
+
+        if args.cmd == "spotcheck":
+            do_inspect(src, outdir, p, args.min_chars)
+            do_diagnose(p, args.top)
+            do_spotcheck(p, args.n)
+            print("\n抽查表 → %s（填「一致?」列，≥80%% 即过 P1 门禁）" % p["spotcheck"])
             return 0
 
         if args.cmd == "rewrite":
