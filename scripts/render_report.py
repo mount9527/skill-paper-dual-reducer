@@ -69,7 +69,7 @@ class Report:
         return "\n".join(self.parts)
 
 
-def _overview(r: Report, doc: dict, profile: dict) -> None:
+def _overview(r: Report, doc: dict, profile: dict, text_style: str = "plain") -> None:
     s = doc["stats"]
     r.section("文档概览")
     r.add(_table(["指标", "数值"], [
@@ -82,6 +82,7 @@ def _overview(r: Report, doc: dict, profile: dict) -> None:
                                                 profile["summary"]["mid"],
                                                 profile["summary"]["low"])],
         ["篇内重复率", "%.1f%%" % (profile["duplicates"]["stats"]["repeat_rate"] * 100)],
+        ["文风档案", "平实五条（plain）" if text_style == "plain" else "学术润色（academic）"],
     ]))
     r.add("")
 
@@ -196,7 +197,7 @@ def _verdict(r: Report, verdict: dict | None) -> None:
 
 
 def render(doc: dict, profile: dict, verdict: dict | None, result: dict | None,
-           mode: str = "both") -> str:
+           mode: str = "both", text_style: str = "plain") -> str:
     if mode not in ("diagnose", "rewrite", "both"):
         raise ValueError("mode 只能是 diagnose / rewrite / both，收到 %r" % mode)
 
@@ -205,7 +206,7 @@ def render(doc: dict, profile: dict, verdict: dict | None, result: dict | None,
     r.add("> 本报告由 paper-dual-reduce 自动生成，仅用于投稿前自查。"
           "文中的「风险分」是篇内相对指标，不是 AIGC 概率，也不能预测任何平台的检测结果。\n")
 
-    _overview(r, doc, profile)
+    _overview(r, doc, profile, text_style)
     if mode in ("diagnose", "both"):
         _diagnosis(r, doc, profile)
     if mode in ("rewrite", "both"):
@@ -232,6 +233,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--out", required=True)
     ap.add_argument("--mode", choices=("diagnose", "rewrite", "both"), default="both",
                     help="只诊断 / 只改写 / 诊断加改写（默认 both）")
+    ap.add_argument("--style", choices=("plain", "academic"), default="plain",
+                    help="文风档案（写进报告概览，便于复核与归因）")
     args = ap.parse_args(argv)
 
     doc = read_json(args.doc)
@@ -239,7 +242,7 @@ def main(argv: list[str] | None = None) -> int:
     verdict = read_json(args.verdict) if args.verdict else None
     result = read_json(args.result) if args.result else None
 
-    md = render(doc, profile, verdict, result, mode=args.mode)
+    md = render(doc, profile, verdict, result, mode=args.mode, text_style=args.style)
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(md, encoding="utf-8")

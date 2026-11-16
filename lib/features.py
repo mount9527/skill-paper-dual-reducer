@@ -179,13 +179,14 @@ def risk_level(score: float) -> str:
     return "low"
 
 
-#: 成因 → 算子。v0.1 只启用 O1/O2/O3/O4/O9，其余标注 availability。
+#: 成因 → 算子。v0.2 起 O8 同义替换也启用（配合文风档案 plain 的语体要求）；
+#: O5 仍关闭——它的失败模式是编造事实，靠提示词管不住。
 CAUSES = [
     {"code": "A1", "name": "句长均齐", "dim": "a1", "op": "O1", "op_name": "句长重分布", "v01": True},
     {"code": "A2", "name": "连接词过密", "dim": "a2", "op": "O2", "op_name": "连接词抑制", "v01": True},
     {"code": "A3", "name": "句式模板化", "dim": "a3", "op": "O4", "op_name": "句法重构", "v01": True},
     {"code": "A4", "name": "信息空泛", "dim": "a4", "op": "O5", "op_name": "具体化改写", "v01": False},
-    {"code": "A5", "name": "词汇平淡", "dim": "a5", "op": "O8", "op_name": "同义替换", "v01": False},
+    {"code": "A5", "name": "词汇平淡", "dim": "a5", "op": "O8", "op_name": "同义替换", "v01": True},
     {"code": "A6", "name": "结构平行", "dim": "a6", "op": "O6", "op_name": "段落节奏调整", "v01": False},
     {"code": "A7", "name": "内部重复", "dim": None, "op": "O9", "op_name": "引用转述与合并", "v01": True},
 ]

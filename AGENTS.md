@@ -26,12 +26,15 @@
 ```bash
 python run.py doctor                                  # 环境自检
 python run.py diagnose --in paper.docx --outdir out    # 只诊断
-python run.py rewrite  --in paper.docx --outdir out    # 出提示词
+python run.py rewrite  --in paper.docx --outdir out    # 出提示词（默认 --style plain）
 python run.py lint     --in paper.docx --outdir out --edits out/edits.jsonl
 python run.py finish   --in paper.docx --outdir out --edits out/edits.jsonl
-python tests/run_e2e.py                               # 验收：43 项断言
+python tests/run_e2e.py                               # 验收：48 项断言
 ```
 
+- **文风档案**：`--style plain`（默认，五条平实规则：语序/同义/主被动互换 + 补主语 + 去主观 +
+  助词化 + 标点连贯）或 `--style academic`（不注入文风块）。改文风规则要同时改
+  `scripts/build_prompts.py` 的 `STYLE_PLAIN` 与 `references/operators.md`，否则口径分叉。
 - 本机宿主控制台可能是 GBK。脚本已把 stdout 错误策略改成 `replace`；**测试子进程时**必须
   设 `PYTHONUTF8=1` 并按 UTF-8 解码，否则会在第一个汉字上崩。
 - 改代码时**先加断言再实现**（TDD）。断言进 `tests/run_e2e.py`：它是唯一的验收入口。
@@ -39,7 +42,7 @@ python tests/run_e2e.py                               # 验收：43 项断言
 
 ## 已验收的事实（2026-11-16）
 
-- `tests/run_e2e.py`：43/43 通过（解析/诊断/排期/提示词/回填/复检/两个篡改反例/CLI/模式/lint/代码块/GBK）。
+- `tests/run_e2e.py`：**48/48** 通过（解析/诊断/排期/提示词/回填/复检/两个篡改反例/CLI/模式/lint/代码块/GBK/文风）。
 - 真实文档《论文双降 Skill 复现 SOP 与可行性报告.docx》（862 段 / 17 表 / 2 节 / 53 标题）：
   12 段真改写，`format_diff`、`entity_diff`、`locked_diff`、结构 diff 全空；
   Word 打开前后均 **28 页 / 843 段**。

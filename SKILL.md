@@ -3,7 +3,7 @@ name: paper-dual-reduce
 description: Diagnose and rewrite Chinese academic papers in .docx to reduce AI-style statistical fingerprints and in-document repetition, keeping Word formatting byte-identical. Use when a user asks to lower AIGC detection risk, reduce repetition, or polish thesis writing while keeping tables, formulas and citations intact.
 description_zh: 诊断并改写中文论文 .docx，降低 AI 写作的统计特征与篇内重复，同时保证 Word 格式零漂移。适用于降 AIGC 味、降重、润色论文表达并保留原格式/表格/公式/引用。
 description_en: Diagnose and rewrite Chinese academic .docx files to reduce AI-style fingerprints and in-document repetition, with byte-level formatting fidelity.
-version: "0.2.0"
+version: "0.3.0"
 ---
 
 # 论文双降（降 AIGC 味 / 降篇内重复）
@@ -40,6 +40,8 @@ python run.py rewrite  --in paper.docx --outdir out    # 出 out/prompts.jsonl�
 python run.py lint     --in paper.docx --outdir out --edits out/edits.jsonl
 python run.py finish   --in paper.docx --outdir out --edits out/edits.jsonl
 ```
+
+默认文风是 **`plain`（平实五条）**；只要学术润色就加 `--style academic`（见「文风档案」）。
 
 `finish` 一条命令完成：预检 → 回填 → 篇级复检 → 报告。
 **预检不通过就不要回填**——`lint` 会逐条告诉你会被哪道闸门拒、怎么改。
@@ -89,6 +91,26 @@ python scripts/render_report.py --doc out/doc.json --profile out/profile.json \
 3. **格式漂移零容忍。** 段级不符只废该段；篇级不符整篇回退为原件。
 4. **锁定区不动。** 标题、表格、公式、文本框、脚注、超链接、修订、参考文献、代码块、<40 字段。
 5. **不新增事实。** 编造具体数字能让代理分显著下降——所以这条必须靠门禁，不能靠自觉。
+
+## 文风档案（`--style`）
+
+| 档案 | 语义 | 何时用 |
+|---|---|---|
+| `plain`（默认） | 平实五条：语序/同义/主被动互换 + 补主语 + 去主观 + 加助词 + 标点连贯 | 「降 AI 味」「像人写的」「平实一点」 |
+| `academic` | 只做学术润色，不注入文风块 | 只要「润色通顺」，不能接受语体变随意 |
+
+平实五条（写进每条 prompt，模型必须同时满足）：
+
+1. **只换说法不换内容**：调语序、换同义词、变主谓宾结构；无主语句补主语（只能来自上下文，不得引入新主体）。
+2. **平实文笔**：删掉「我觉得／我认为／笔者认为」这类主观表述与夸张修饰，平铺直叙。
+3. **助词化**：适当加「的、了、到、过、会、有、能、把」，让句子不那么紧致；但不写成口水话。
+4. **标点连贯**：少用句号、多用逗号分号；长句拆短；高频词换同义词；专业词在不改术语与缩写的前提下通俗化。
+5. **结构松绑**：打乱句子结构、把字句与被动句互换、调语序；核心表意与论断强度不得改变。
+
+底线：总字数与原文相差不超过 ±20%（硬闸仍是 0.55~1.40 倍，超了整段拒）。
+
+配套算子：`plain` 下 O8 同义替换已启用（v0.2）。五条规则属于**文风层**，不是五个算子——
+助词密度、标点密度是全文语体属性，逐段归因没有意义；算子只保留可归因的动作（见 `references/operators.md`）。
 
 ## 三个模式
 

@@ -212,6 +212,26 @@ def main() -> int:
     run(["run.py", "rewrite", "--in", str(FIX / "sample.docx"), "--outdir", str(rdir),
          "--max-tasks", "6"])
     check("rewrite 模式出 prompts.jsonl", (rdir / "prompts.jsonl").exists())
+
+    # 文风档案：plain 是默认，academic 可关掉文风块
+    tk = json.loads((rdir / "tasks.json").read_text(encoding="utf-8"))
+    check("默认文风为 plain", tk.get("text_style") == "plain", str(tk.get("text_style")))
+    p_plain = [json.loads(x) for x in (rdir / "prompts.jsonl").read_text(encoding="utf-8").splitlines() if x.strip()]
+    check("提示词含五条文风要求", "【文风要求" in p_plain[0]["user"])
+    need = ("助词", "把字句", "句号", "我觉得", "同义词")
+    check("文风要求覆盖五条（助词/把字句/标点/主观/同义）",
+          all(k in p_plain[0]["user"] for k in need),
+          str([k for k in need if k not in p_plain[0]["user"]]))
+    run(["run.py", "rewrite", "--in", str(FIX / "sample.docx"), "--outdir", str(rdir / "acad"),
+         "--max-tasks", "3", "--style", "academic"])
+    p_acad = [json.loads(x) for x in (rdir / "acad" / "prompts.jsonl").read_text(encoding="utf-8").splitlines() if x.strip()]
+    check("academic 档不带文风块", "【文风要求" not in p_acad[0]["user"])
+
+    from lib.features import attribute as _attr
+    got = _attr({"a1": 0.0, "a2": 0.0, "a3": 0.0, "a4": 0.0, "a5": 0.9, "a6": 0.0}, 0.0)
+    check("同义替换算子（O8）已启用", any(c["op"] == "O8" and c["available"] for c in got),
+          str([(c["op"], c["available"]) for c in got]))
+
     run(["run.py", "lint", "--in", str(FIX / "sample.docx"), "--outdir", str(rdir),
          "--edits", str(FIX / "edits.jsonl")], expect_rc=1)
     lint = json.loads(lint_stub.read_text(encoding="utf-8"))

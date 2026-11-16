@@ -43,9 +43,24 @@ OP_SPEC = {
     "O4": ("句法重构",
            "拆解模板化句式（随着…的发展、在…方面、对…进行…、具有…意义）：改成具体主谓结构，"
            "去掉空转的名词化表达；长句拆短，被动改主动。"),
+    "O8": ("同义替换",
+           "把反复出现的高频抽象词换成语感更普通的近义词（如「显著提升」→「明显变好」、「机制」→「做法」）。"
+           "专业术语、英文缩写、引用与书名一律不换；换完之后整句必须仍然准确，不得把强论断换弱。"),
     "O9": ("引用转述与合并",
            "把与其他段落重复的表述合并为一处，其余位置改为回指或概括；保留原有引用标记不动。"),
 }
+
+#: 文风档案 `plain`：把用户要的五条语体规则固化成提示词约束。
+#: 它是**风格层**，与算子层正交——任何算子都在这个语体下执行。
+STYLE_PLAIN = """【文风要求（五条，全部适用）】
+1. 只换说法不换内容：调整语序、替换同义词、变换主谓宾结构；无主语句要补出主语（只能来自上下文，不得引入新主体）；以通顺为先。
+2. 平实文笔：删掉「我觉得／我认为／笔者认为」这类主观表述与夸张修饰，平铺直叙，贴近普通本科生的写作状态。
+3. 适当加入「的、了、到、过、会、有、能、把」等助词，让句子不那么紧致精炼；但不得写成口水话，也不得影响可读性。
+4. 少用句号，多用逗号、分号衔接；长句拆成短句；高频词换同义词；专业词在不改术语与英文缩写的前提下换成通俗说法。
+5. 可打乱原有句子结构、把字句与被动句互换、调整语序；但核心表意、论断强度、事实与引用一律不得改变。
+底线：总字数与原文相差不超过 ±20%；数字、年份、引用、书名、英文缩写原样保留。"""
+
+STYLE_NAMES = {"plain": "平实文风（五条）", "academic": "学术文风（默认收紧）"}
 
 SYSTEM = """你是中文学术论文的润色编辑，只做表达层的改写，不做内容创作。
 
@@ -59,11 +74,12 @@ SYSTEM = """你是中文学术论文的润色编辑，只做表达层的改写�
 5. text 必须是一整段可直接替换原文的文字，不含换行符。"""
 
 
-def build_user(task: dict, text: str) -> str:
+def build_user(task: dict, text: str, text_style: str = "plain") -> str:
     op_name, op_rule = OP_SPEC.get(task["op"], OP_SPEC["O4"])
     c = task["constraints"]
     pid = task["pid"]
     spans = "、".join(c["keep_spans"]) if c["keep_spans"] else "（本段无保护区）"
+    style_block = (STYLE_PLAIN + "\n\n") if text_style == "plain" else ""
     return f"""【段落编号】{pid}
 【本轮目标】{op_name}（{task["op"]}）
 【改动幅度】{TIER_SPEC.get(task.get("_tier", "normal"))}
@@ -77,7 +93,7 @@ def build_user(task: dict, text: str) -> str:
 - 必须原样保留的片段：{spans}
 - 禁止：新增数字/年份/百分比；新增或删除引用；改写书名、术语、英文缩写；改变论断方向
 
-【改写要求】
+{style_block}【改写要求】
 {op_rule}
 
 【输出】仅一行 JSON：{{"pid": "{pid}", "text": "..."}}"""
@@ -95,6 +111,7 @@ def main(argv: list[str] | None = None) -> int:
     tasks = json.loads(Path(args.tasks).read_text(encoding="utf-8"))
     doc = json.loads(Path(args.doc).read_text(encoding="utf-8"))
     rows = {r["pid"]: r for r in doc["paragraphs"]}
+    text_style = tasks.get("text_style", "plain")
 
     selected = tasks["tasks"][: args.limit] if args.limit else tasks["tasks"]
     n = 0
@@ -115,7 +132,7 @@ def main(argv: list[str] | None = None) -> int:
                     "op": task["op"],
                     "tier": tier,
                     "system": SYSTEM,
-                    "user": build_user(t, row["text"]),
+                    "user": build_user(t, row["text"], text_style),
                     "expect": {"schema": {"pid": "str", "text": "str"},
                                "max_chars": task["constraints"]["max_chars"]},
                 }

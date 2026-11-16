@@ -85,9 +85,9 @@ def do_diagnose(p: dict, top: int) -> None:
                   "--top", str(top)])
 
 
-def do_plan(p: dict, max_tasks: int) -> None:
+def do_plan(p: dict, max_tasks: int, style: str) -> None:
     _run("排期", ["scripts/plan.py", "--profile", str(p["profile"]), "--doc", str(p["doc"]),
-                  "--out", str(p["tasks"]), "--max-tasks", str(max_tasks)])
+                  "--out", str(p["tasks"]), "--max-tasks", str(max_tasks), "--style", style])
 
 
 def do_prompts(p: dict) -> None:
@@ -95,9 +95,9 @@ def do_prompts(p: dict) -> None:
                     "--doc", str(p["doc"]), "--out", str(p["prompts"])])
 
 
-def do_report(p: dict, mode: str) -> None:
+def do_report(p: dict, mode: str, style: str) -> None:
     argv = ["scripts/render_report.py", "--doc", str(p["doc"]), "--profile", str(p["profile"]),
-            "--out", str(p["report"]), "--mode", mode]
+            "--out", str(p["report"]), "--mode", mode, "--style", style]
     if p["verdict"].exists():
         argv += ["--verdict", str(p["verdict"])]
     if p["result"].exists():
@@ -176,6 +176,8 @@ def main(argv: list[str] | None = None) -> int:
         sp.add_argument("--outdir", required=True, help="产物目录")
         sp.add_argument("--edits", help="edits.jsonl（lint / finish / all 必填）")
         sp.add_argument("--mode", choices=MODES, default="both", help="模式切换（默认 both）")
+        sp.add_argument("--style", choices=("plain", "academic"), default="plain",
+                        help="文风档案：plain=平实五条（默认），academic=只做学术润色")
         sp.add_argument("--max-tasks", type=int, default=12, help="改写任务上限（默认 12）")
         sp.add_argument("--top", type=int, default=15, help="报告保留的高风险段数（默认 15）")
         sp.add_argument("--min-chars", type=int, default=40, help="低于此字数不改写（默认 40）")
@@ -198,14 +200,14 @@ def main(argv: list[str] | None = None) -> int:
         if args.cmd == "diagnose":
             do_inspect(src, outdir, p, args.min_chars)
             do_diagnose(p, args.top)
-            do_report(p, "diagnose")
+            do_report(p, "diagnose", args.style)
             print("\n只诊断模式：报告 → %s" % p["report"])
             return 0
 
         if args.cmd == "rewrite":
             do_inspect(src, outdir, p, args.min_chars)
             do_diagnose(p, args.top)
-            do_plan(p, args.max_tasks)
+            do_plan(p, args.max_tasks, args.style)
             do_prompts(p)
             print("\n下一步：按 %s 逐行改写，写出 edits.jsonl，再跑" % p["prompts"])
             print("  python run.py finish --in %s --outdir %s --edits edits.jsonl" % (src, outdir))
@@ -228,12 +230,12 @@ def main(argv: list[str] | None = None) -> int:
             do_inspect(src, outdir, p, args.min_chars)
             do_diagnose(p, args.top)
         if args.cmd == "all" and args.mode in ("rewrite", "both"):
-            do_plan(p, args.max_tasks)
+            do_plan(p, args.max_tasks, args.style)
             do_prompts(p)
 
         do_lint(src, args.edits, p, strict=args.strict)
         do_apply(src, args.edits, p)
-        do_report(p, args.mode)
+        do_report(p, args.mode, args.style)
 
         from lib.cli import read_json
         verdict = read_json(p["verdict"]) if p["verdict"].exists() else {"passed": False}

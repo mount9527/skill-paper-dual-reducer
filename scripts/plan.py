@@ -31,7 +31,8 @@ GUARANTEED_RISK = 0.70  # 达到此分数的段落不受「单段预算上限」
 
 
 def plan(profile: dict, doc: dict, max_tasks: int = 12,
-         budget_share: float = 0.40, min_risk: float = DEFAULT_MIN) -> dict:
+         budget_share: float = 0.40, min_risk: float = DEFAULT_MIN,
+         style: str = "plain") -> dict:
     rows = {r["pid"]: r for r in doc["paragraphs"]}
     paras = [p for p in profile["paragraphs"] if p["risk"] >= min_risk]
 
@@ -106,6 +107,8 @@ def plan(profile: dict, doc: dict, max_tasks: int = 12,
     return {
         "schema": "paper-dual-reduce/tasks@1",
         "round": 1,
+        # 文风档案由这里决定，build_prompts 据此决定是否注入五条文风规则
+        "text_style": style,
         "budget": {
             "total_chars": total,
             "share": budget_share,
@@ -133,11 +136,13 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--max-tasks", type=int, default=12)
     ap.add_argument("--budget-share", type=float, default=0.40)
     ap.add_argument("--min-risk", type=float, default=DEFAULT_MIN)
+    ap.add_argument("--style", choices=("plain", "academic"), default="plain",
+                    help="文风档案：plain=平实五条（默认），academic=只做学术润色")
     args = ap.parse_args(argv)
 
     profile = json.loads(Path(args.profile).read_text(encoding="utf-8"))
     doc = json.loads(Path(args.doc).read_text(encoding="utf-8"))
-    data = plan(profile, doc, args.max_tasks, args.budget_share, args.min_risk)
+    data = plan(profile, doc, args.max_tasks, args.budget_share, args.min_risk, args.style)
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -147,8 +152,8 @@ def main(argv: list[str] | None = None) -> int:
     if data["counts"]["below_threshold"]:
         print("[plan] 提示：全文没有段落达到风险阈值 %.2f，已退化为按相对排序取前 %d 段"
               % (data["counts"]["min_risk"], data["counts"]["tasks"]))
-    print("[plan] 候选 %d ｜ 出任务 %d ｜ 用预算 %d/%d 字（%.0f%%）"
-          % (data["counts"]["candidates"], data["counts"]["tasks"],
+    print("[plan] 候选 %d ｜ 出任务 %d ｜ 文风 %s ｜ 用预算 %d/%d 字（%.0f%%）"
+          % (data["counts"]["candidates"], data["counts"]["tasks"], data["text_style"],
              b["used_chars"], b["budget_chars"], b["used_share"] * 100))
     for t in data["tasks"][:6]:
         print("  %s %s risk=%.2f %s chars=%d"
