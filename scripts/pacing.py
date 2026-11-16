@@ -61,13 +61,17 @@ def plan(doc: dict) -> dict:
     targets: dict[str, dict] = {}
     for run in runs:
         med = int(statistics.median([x["n"] for x in run]))
+        low, high = max(2, med - 2), med + 4
+        prev = None
         for k, x in enumerate(run):
-            base = med + OFFSETS[k % len(OFFSETS)]
-            to = max(2, min(med + 4, base))
-            if to == x["n"]:            # 目标恰好等于原值，就再挪一格
-                to = max(2, to + (2 if k % 2 == 0 else -2))
-            if to != x["n"]:
-                targets[x["pid"]] = {"from": x["n"], "to": to}
+            to = low if k % 2 == 0 else high
+            # 相邻目标必须至少差 2：串的判定是「相差 <=1」，差 1 仍算同一条串。
+            # 目标等于原值时也要挪开，否则这一段改了等于没改。
+            if to == x["n"] or (prev is not None and abs(to - prev) < 2):
+                cands = [v for v in (to + 2, to - 2, to + 3, to - 3, high, low) if v >= 2]
+                to = next((v for v in cands if v != x["n"] and (prev is None or abs(v - prev) >= 2)), to)
+            targets[x["pid"]] = {"from": x["n"], "to": to}
+            prev = to
 
     return {
         "schema": "paper-dual-reduce/pacing@1",

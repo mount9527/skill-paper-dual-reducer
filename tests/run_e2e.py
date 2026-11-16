@@ -303,8 +303,16 @@ def main() -> int:
                           zip(["s1", "s2", "s3"], ["s2", "s3", "s4"])
                           if p in tg and q in tg)
     check("跨段编排给相邻段不同目标句数",
-          len(pac["runs"]) >= 1 and len(tg) >= 2 and adjacent_differ
+          len(pac["runs"]) >= 1 and len(tg) >= 2
           and all(v["from"] != v["to"] for v in tg.values()))
+    # 相邻必须差 >=2：差 1 仍算同一条串，串就破不掉
+    gaps_ok = all(
+        abs(tg[a]["to"] - tg[b]["to"]) >= 2
+        for run in pac["runs"]
+        for a, b in zip(run["pids"], run["pids"][1:])
+        if a in tg and b in tg
+    )
+    check("跨段目标相邻至少差 2", gaps_ok)
 
     # 目标句数必须出现在提示词的【约束】里
     demo = json.loads((rdir / "forced" / "tasks.json").read_text(encoding="utf-8"))
