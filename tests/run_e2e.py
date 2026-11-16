@@ -21,6 +21,7 @@ inspect → diagnose → plan → build_prompts → apply_edits → verify → r
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import shutil
@@ -74,6 +75,10 @@ def main() -> int:
 
     print("[1/11] 解析")
     run(["tests/make_fixture.py"])
+    with zipfile.ZipFile(FIX / "sample.docx") as zf:
+        stamps = {i.date_time for i in zf.infolist()}
+    check("夹具 zip 时间戳固定（可复现构建，测试不产生伪 diff）",
+          stamps == {(2026, 1, 1, 0, 0, 0)}, str(sorted(stamps)[:2]))
     run(["scripts/inspect_docx.py", "--in", str(FIX / "sample.docx"),
          "--out", str(doc_json), "--summary"])
     doc = json.loads(doc_json.read_text(encoding="utf-8"))

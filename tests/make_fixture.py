@@ -41,6 +41,10 @@ W14 = NS["w14"]
 
 OUT = ROOT / "tests" / "fixtures"
 
+#: 固定时间戳（DOS 时间最小合法值附近）。zip 条目时间决定字节，必须固定，
+#: 否则每跑一次测试夹具就变一次。
+FIXED_ZIP_TIME = (2026, 1, 1, 0, 0, 0)
+
 
 def esc(s: str) -> str:
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -250,13 +254,21 @@ STYLES = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 
 def write_docx(path: Path, document_xml: str) -> None:
+    """写出 .docx。zip 条目时间戳固定——否则每次跑测试都会改写夹具字节，
+    仓库里出现纯噪声的 diff（同尺寸、不同内容）。"""
     path.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
-        z.writestr("[Content_Types].xml", CONTENT_TYPES)
-        z.writestr("_rels/.rels", ROOT_RELS)
-        z.writestr("word/document.xml", document_xml)
-        z.writestr("word/_rels/document.xml.rels", DOC_RELS)
-        z.writestr("word/styles.xml", STYLES)
+        for name, data in (
+            ("[Content_Types].xml", CONTENT_TYPES),
+            ("_rels/.rels", ROOT_RELS),
+            ("word/document.xml", document_xml),
+            ("word/_rels/document.xml.rels", DOC_RELS),
+            ("word/styles.xml", STYLES),
+        ):
+            info = zipfile.ZipInfo(name, FIXED_ZIP_TIME)
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            z.writestr(info, data)
 
 
 # --------------------------------------------------------------------------
