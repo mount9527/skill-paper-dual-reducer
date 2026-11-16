@@ -3,7 +3,7 @@ name: paper-dual-reduce
 description: Diagnose and rewrite Chinese academic papers in .docx to reduce AI-style statistical fingerprints and in-document repetition, keeping Word formatting byte-identical. Use when a user asks to lower AIGC detection risk, reduce repetition, or polish thesis writing while keeping tables, formulas and citations intact.
 description_zh: 诊断并改写中文论文 .docx，降低 AI 写作的统计特征与篇内重复，同时保证 Word 格式零漂移。适用于降 AIGC 味、降重、润色论文表达并保留原格式/表格/公式/引用。
 description_en: Diagnose and rewrite Chinese academic .docx files to reduce AI-style fingerprints and in-document repetition, with byte-level formatting fidelity.
-version: "0.4.6"
+version: "0.4.7"
 ---
 
 # 论文双降（降 AIGC 味 / 降篇内重复）

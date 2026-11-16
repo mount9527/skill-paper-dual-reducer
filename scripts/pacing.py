@@ -42,6 +42,7 @@ def plan(doc: dict) -> dict:
         cand.append({"pid": r["pid"], "n": sent_count(r), "chars": len(text)})
 
     runs = []
+    spans = []
     i = 0
     while i < len(cand):
         if cand[i] is None:
@@ -56,10 +57,12 @@ def plan(doc: dict) -> dict:
             j += 1
         if j - i >= RUN_MIN:
             runs.append(cand[i:j])
+            spans.append((i, j))
         i = j
 
     targets: dict[str, dict] = {}
-    for run in runs:
+    units = []
+    for (start, end), run in zip(spans, runs):
         med = int(statistics.median([x["n"] for x in run]))
         low, high = max(2, med - 2), med + 4
         prev = None
@@ -73,6 +76,25 @@ def plan(doc: dict) -> dict:
             targets[x["pid"]] = {"from": x["n"], "to": to}
             prev = to
 
+        # 边界各扩 1 段：串的判定看相邻两句数，只改串内不碰边界，
+        # 边界那一段仍可能和串首/串尾相差 <=1，串就拆不掉。
+        # 放在最后一个成员之后处理，避免同一串重复生成 unit。
+        if k != len(run) - 1:
+            continue
+        unit_pids = [x["pid"] for x in run]
+        for bidx in (start - 1, end):
+            if bidx < 0 or bidx >= len(cand) or cand[bidx] is None:
+                continue
+            b = cand[bidx]
+            adj = targets.get(run[0]["pid"] if bidx < start else run[-1]["pid"], {}).get("to")
+            if adj is None:
+                continue
+            to = adj + 2 if adj + 2 <= 10 else max(2, adj - 2)
+            if to != b["n"]:
+                targets[b["pid"]] = {"from": b["n"], "to": to}
+            unit_pids = ([b["pid"]] + unit_pids) if bidx < start else (unit_pids + [b["pid"]])
+        units.append({"pids": unit_pids, "run": [x["pid"] for x in run]})
+
     return {
         "schema": "paper-dual-reduce/pacing@1",
         "runs": [
@@ -84,6 +106,7 @@ def plan(doc: dict) -> dict:
             for run in runs
         ],
         "targets": targets,
+        "units": units,
     }
 
 
