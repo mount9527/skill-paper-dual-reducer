@@ -32,7 +32,8 @@ GUARANTEED_RISK = 0.70  # 达到此分数的段落不受「单段预算上限」
 
 def plan(profile: dict, doc: dict, max_tasks: int = 12,
          budget_share: float = 0.40, min_risk: float = DEFAULT_MIN,
-         style: str = "plain") -> dict:
+         style: str = "plain", include: list[str] | None = None) -> dict:
+    include = [x for x in (include or []) if x]
     rows = {r["pid"]: r for r in doc["paragraphs"]}
     paras = [p for p in profile["paragraphs"] if p["risk"] >= min_risk]
 
@@ -58,36 +59,24 @@ def plan(profile: dict, doc: dict, max_tasks: int = 12,
     queue = sorted(guaranteed, key=lambda x: -x["risk"]) + [p for p in scored if p not in guaranteed]
 
     single_cap = int(budget * 0.40)
-    used = 0
-    tasks = []
-    skipped_cap = 0
-    for p in queue:
-        if len(tasks) >= max_tasks or used >= budget:
-            break
-        over_cap = p["cost"] > single_cap
-        if over_cap and p["risk"] < GUARANTEED_RISK:
-            skipped_cap += 1
-            continue
-        if used + p["cost"] > budget:
-            continue
 
+    def make_task(p: dict, idx: int) -> dict:
         # 选算子：优先「可用的最高成因」，都不可用时退回 O4（句法重构，v0.1 通用算子）
         usable = [c for c in p["causes"] if c["available"]]
         if usable:
             op, op_name, cause = usable[0]["op"], usable[0]["op_name"], usable[0]["code"]
         else:
             op, op_name, cause = "O4", "句法重构", (p["causes"][0]["code"] if p["causes"] else "A3")
-
         row = rows[p["pid"]]
-        tasks.append({
-            "task_id": "t%03d" % (len(tasks) + 1),
+        return {
+            "task_id": "t%03d" % idx,
             "pid": p["pid"],
             "op": op,
             "op_name": op_name,
             "cause": cause,
             "risk": p["risk"],
-            "gain": p["gain"],
-            "rho": p["rho"],
+            "gain": p.get("gain", 0.0),
+            "rho": p.get("rho", 0.0),
             "cost_chars": p["chars"],
             "dup_ratio": p["dup_ratio"],
             "constraints": {
@@ -101,7 +90,39 @@ def plan(profile: dict, doc: dict, max_tasks: int = 12,
                               "改写书名、术语、英文缩写", "改变论断方向或结论"],
             },
             "dims": p["dims"],
-        })
+        }
+
+    used = 0
+    tasks = []
+    skipped_cap = 0
+    for p in queue:
+        if len(tasks) >= max_tasks or used >= budget:
+            break
+        over_cap = p["cost"] > single_cap
+        if over_cap and p["risk"] < GUARANTEED_RISK:
+            skipped_cap += 1
+            continue
+        if used + p["cost"] > budget:
+            continue
+        tasks.append(make_task(p, len(tasks) + 1))
+        used += p["chars"]
+
+    # diag 驱动选段：这些段落未必风险高（甚至低于阈值），但带着具体痕迹
+    # （口语词/破折号/冒号列举/嵌套），必须进本轮任务，否则痕迹永远改不掉。
+    # 它们不占 max_tasks 名额、不计入 40% 预算——定向修复优先于背包最优。
+    forced: list[str] = []
+    seen = {t["pid"] for t in tasks}
+    by_pid = {p["pid"]: p for p in profile["paragraphs"]}
+    for pid in include:
+        if pid in seen:
+            continue
+        row = rows.get(pid)
+        p = by_pid.get(pid)
+        if not row or p is None or row.get("locked"):
+            continue
+        tasks.append(make_task(p, len(tasks) + 1))
+        seen.add(pid)
+        forced.append(pid)
         used += p["chars"]
 
     return {
@@ -120,6 +141,7 @@ def plan(profile: dict, doc: dict, max_tasks: int = 12,
         "counts": {
             "candidates": len(paras),
             "tasks": len(tasks),
+            "forced": len(forced),
             "skipped_by_cap": skipped_cap,
             "below_threshold": fallback,
             "min_risk": min_risk,
@@ -138,11 +160,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--min-risk", type=float, default=DEFAULT_MIN)
     ap.add_argument("--style", choices=("plain", "academic"), default="plain",
                     help="文风档案：plain=平实五条（默认），academic=只做学术润色")
+    ap.add_argument("--include", default="",
+                    help="强制纳入的段落 id，逗号分隔（用于 diag 驱动的定向修复）")
     args = ap.parse_args(argv)
 
     profile = json.loads(Path(args.profile).read_text(encoding="utf-8"))
     doc = json.loads(Path(args.doc).read_text(encoding="utf-8"))
-    data = plan(profile, doc, args.max_tasks, args.budget_share, args.min_risk, args.style)
+    include = [x.strip() for x in args.include.split(",") if x.strip()]
+    data = plan(profile, doc, args.max_tasks, args.budget_share, args.min_risk, args.style, include)
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)

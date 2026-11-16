@@ -249,6 +249,16 @@ def main() -> int:
     check("提示词可注入额外要求（--hints）",
           "拆解冒号并列与嵌套编号" in p_hint[0]["user"] and "【额外要求" in p_hint[0]["user"])
 
+    # diag 驱动选段：把低风险但带痕迹的段落强制纳入（--include）
+    low = min(prof["paragraphs"], key=lambda p: p["risk"])
+    run(["run.py", "rewrite", "--in", str(FIX / "sample.docx"), "--outdir", str(rdir / "forced"),
+         "--max-tasks", "1", "--include", low["pid"]])
+    tf = json.loads((rdir / "forced" / "tasks.json").read_text(encoding="utf-8"))
+    check("可强制纳入指定段落（--include）",
+          any(t["pid"] == low["pid"] for t in tf["tasks"])
+          and tf["counts"].get("forced", 0) >= 1
+          and tf["counts"]["tasks"] >= 2)
+
     from lib.features import attribute as _attr
     got = _attr({"a1": 0.0, "a2": 0.0, "a3": 0.0, "a4": 0.0, "a5": 0.9, "a6": 0.0}, 0.0)
     check("同义替换算子（O8）已启用", any(c["op"] == "O8" and c["available"] for c in got),

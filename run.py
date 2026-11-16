@@ -87,9 +87,12 @@ def do_diagnose(p: dict, top: int) -> None:
                   "--top", str(top)])
 
 
-def do_plan(p: dict, max_tasks: int, style: str) -> None:
-    _run("排期", ["scripts/plan.py", "--profile", str(p["profile"]), "--doc", str(p["doc"]),
-                  "--out", str(p["tasks"]), "--max-tasks", str(max_tasks), "--style", style])
+def do_plan(p: dict, max_tasks: int, style: str, include: str | None = None) -> None:
+    argv = ["scripts/plan.py", "--profile", str(p["profile"]), "--doc", str(p["doc"]),
+            "--out", str(p["tasks"]), "--max-tasks", str(max_tasks), "--style", style]
+    if include:
+        argv += ["--include", include]
+    _run("排期", argv)
 
 
 def do_prompts(p: dict, hints: str | None = None) -> None:
@@ -193,6 +196,7 @@ def main(argv: list[str] | None = None) -> int:
         sp.add_argument("--n", type=int, default=20, help="抽查表段数（默认 20）")
         sp.add_argument("--hints", help="额外要求文件（UTF-8，每行一条），注入每条改写提示词")
         sp.add_argument("--max-tasks", type=int, default=12, help="改写任务上限（默认 12）")
+        sp.add_argument("--include", help="强制纳入的段落 id，逗号分隔（diag 驱动的定向修复）")
         sp.add_argument("--top", type=int, default=15, help="报告保留的高风险段数（默认 15）")
         sp.add_argument("--min-chars", type=int, default=40, help="低于此字数不改写（默认 40）")
         sp.add_argument("--strict", action="store_true", help="lint 有拒绝就中止")
@@ -228,7 +232,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.cmd == "rewrite":
             do_inspect(src, outdir, p, args.min_chars)
             do_diagnose(p, args.top)
-            do_plan(p, args.max_tasks, args.style)
+            do_plan(p, args.max_tasks, args.style, args.include)
             do_prompts(p, args.hints)
             print("\n下一步：按 %s 逐行改写，写出 edits.jsonl，再跑" % p["prompts"])
             print("  python run.py finish --in %s --outdir %s --edits edits.jsonl" % (src, outdir))
@@ -251,7 +255,7 @@ def main(argv: list[str] | None = None) -> int:
             do_inspect(src, outdir, p, args.min_chars)
             do_diagnose(p, args.top)
         if args.cmd == "all" and args.mode in ("rewrite", "both"):
-            do_plan(p, args.max_tasks, args.style)
+            do_plan(p, args.max_tasks, args.style, args.include)
             do_prompts(p, args.hints)
 
         do_lint(src, args.edits, p, strict=args.strict)
